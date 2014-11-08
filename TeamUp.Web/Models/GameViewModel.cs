@@ -1,20 +1,49 @@
-﻿namespace TeamUp.Models
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Web;
+using TeamUp.Models;
 
-    public class Game
+namespace TeamUp.Web.Models
+{
+    public class GameViewModel
     {
         private ICollection<User> appliedPlayers;
 
-        public Game()
+        public GameViewModel()
         {
             this.appliedPlayers = new HashSet<User>();
         }
 
-        [Key]
-        public int Id { get; set; }
+        public GameViewModel(Game game)
+        {
+
+        }
+
+        public static Expression<Func<Game, GameViewModel>> FromGame
+        {
+            get
+            {
+                return g => new GameViewModel
+                {
+                    DateCreated = g.DateCreated,
+                    StartDate = g.StartDate,
+                    StartHour = g.StartHour,
+                    AvailableSpots = g.AvailableSpots,
+                    MinPlayers = g.MinPlayers,
+                    MaxPlayers = g.MaxPlayers,
+                    HasReservetion = g.HasReservetion,
+                    AdditionalInfo = g.AdditionalInfo,
+                    Price = g.Price,
+                    Creator = g.Creator,
+                    Field = g.Field,
+                    AppliedPlayers = g.AppliedPlayers
+                };
+            }
+        }
+
 
         [Required]
         public DateTime DateCreated { get; set; }

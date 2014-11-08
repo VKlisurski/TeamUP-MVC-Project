@@ -17,8 +17,11 @@
 
         public string Phone { get; set; }
 
+        public string WebSite { get; set; }
+
         public int AddressId { get; set; }
 
+        [Required]
         public virtual Address Address { get; set; }
 
         public virtual ICollection<Game> Games { get; set; }

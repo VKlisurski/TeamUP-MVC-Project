@@ -1,0 +1,40 @@
+﻿@model TeamUp.Web.Models.GameViewModel
+
+<div class="col-md-4">
+    <div class="list-group">
+        <a href="#" class="list-group-item active">
+            Свободни места: @Model.AvailableSpots
+        </a>
+        <a href="#" class="list-group-item">
+            Дата: @string.Format("{0} {1}", Model.StartDate.Day, Model.StartDate.ToString("MMMM", new System.Globalization.CultureInfo("bg")))
+        </a>
+        <a href="#" class="list-group-item">
+            Час: @string.Format("{0:hh}:{1:mm}", Model.StartHour, Model.StartHour)
+        </a>
+        <a href="#" class="list-group-item">
+            Резервация: @if (Model.HasReservetion == true)
+            {
+                <span>Да</span>
+            }
+            else
+            {
+                <span>Не</span>
+            }
+        </a>
+        <a href="#" class="list-group-item">
+            Минимален брой играчи: @Model.MinPlayers
+        </a>
+        <a href="#" class="list-group-item">
+            Максимален брой играчи: @Model.MaxPlayers
+        </a>
+        @if (Model.AdditionalInfo != null)
+        {
+            <a href="#" class="list-group-item">
+                Допълнителна информация: @Model.AdditionalInfo
+            </a>
+        }
+        <a href="#" class="list-group-item">
+            Цена: @string.Format("{0}", Model.Price.ToString("c", new System.Globalization.CultureInfo("bg")))
+        </a>
+    </div>
+</div>
