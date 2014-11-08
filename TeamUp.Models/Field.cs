@@ -12,10 +12,11 @@
             this.games = new HashSet<Game>();
         }
 
-        [Key]
         public int Id { get; set; }
 
         public string Phone { get; set; }
+
+        public string Website { get; set; }
 
         [Required]
         public virtual Address Address { get; set; }

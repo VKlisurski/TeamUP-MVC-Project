@@ -23,7 +23,7 @@
         [Required]
         public bool ShowedUp { get; set; }
 
-        public virtual User Creator { get; set; }
+        public virtual User User { get; set; }
 
         [Required]
         public virtual Game Game { get; set; }
