@@ -5,10 +5,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using TeamUp.Models;
+using TeamUp.Web.Infrastructure.Mapping;
 
 namespace TeamUp.Web.Models
 {
-    public class GameViewModel
+    public class GameViewModel : IMapFrom<Game>
     {
         private ICollection<User> appliedPlayers;
 
@@ -22,29 +23,6 @@ namespace TeamUp.Web.Models
 
         }
 
-        public static Expression<Func<Game, GameViewModel>> FromGame
-        {
-            get
-            {
-                return g => new GameViewModel
-                {
-                    DateCreated = g.DateCreated,
-                    StartDate = g.StartDate,
-                    StartHour = g.StartHour,
-                    AvailableSpots = g.AvailableSpots,
-                    MinPlayers = g.MinPlayers,
-                    MaxPlayers = g.MaxPlayers,
-                    HasReservetion = g.HasReservetion,
-                    AdditionalInfo = g.AdditionalInfo,
-                    Price = g.Price,
-                    Creator = g.Creator,
-                    Field = g.Field,
-                    AppliedPlayers = g.AppliedPlayers
-                };
-            }
-        }
-
-
         [Required]
         public DateTime DateCreated { get; set; }
 
@@ -55,40 +33,14 @@ namespace TeamUp.Web.Models
         public TimeSpan StartHour { get; set; }
 
         [Required]
+        [Range(0, 12)]
         public int AvailableSpots { get; set; }
-
         [Required]
-        public int MinPlayers { get; set; }
-
-        [Required]
+        [Range(8, 12)]
         public int MaxPlayers { get; set; }
 
         [Required]
-        public bool HasReservetion { get; set; }
-
-        public string AdditionalInfo { get; set; }
-
-        [Required]
+        [Range(20, 200)]
         public decimal Price { get; set; }
-
-        [Required]
-        public virtual User Creator { get; set; }
-
-        public int FieldId { get; set; }
-
-        [Required]
-        public virtual Field Field { get; set; }
-
-        public virtual ICollection<User> AppliedPlayers
-        {
-            get
-            {
-                return this.appliedPlayers;
-            }
-            set
-            {
-                this.appliedPlayers = value;
-            }
-        }
     }
 }

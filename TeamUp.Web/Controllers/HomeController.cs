@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TeamUp.Web.Models;
+using AutoMapper.QueryableExtensions;
 
 namespace TeamUp.Web.Controllers
 {
@@ -16,10 +17,11 @@ namespace TeamUp.Web.Controllers
                 .Where(g => g.StartDate > DateTime.Now)
                 .OrderBy(g => g.StartDate)
                 .ThenBy(g => g.StartHour)
-                .Select(GameViewModel.FromGame)
-                .ToList();
+                .AsQueryable()
+                .Project()
+                .To<GameViewModel>();
 
             return View(games);
         }
     }
-}
+} 

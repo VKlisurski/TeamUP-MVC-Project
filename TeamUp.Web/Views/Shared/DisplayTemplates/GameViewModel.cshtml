@@ -7,21 +7,9 @@
         </a>
         <a href="#" class="list-group-item"><b>Свободни места:</b> @Model.AvailableSpots</a>
         <a href="#" class="list-group-item"><b>Час:</b> @string.Format("{0:hh}:{1:mm}", Model.StartHour, Model.StartHour)</a>
-        <a href="#" class="list-group-item">
-            <b>Резервация:</b> @if (Model.HasReservetion == true)
-            {
-                <span>Да</span>
-            }
-            else
-            {
-                <span>Не</span>
-            }
-        </a>
-        <a href="#" class="list-group-item"> <b>Минимален брой играчи:</b> @Model.MinPlayers</a>
         <a href="#" class="list-group-item"> <b>Максимален брой играчи:</b> @Model.MaxPlayers</a>
         <a href="#" class="list-group-item">
             <b>Цена:</b> @string.Format("{0}", Model.Price.ToString("c", new System.Globalization.CultureInfo("bg")))
         </a>
-        <a href="#" class="list-group-item"><b>Автор:</b> @Model.Creator.UserName.Split('@').First()</a>
     </div>
 </div>
