@@ -16,32 +16,36 @@
         [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; }
-
+        [Required]
         public DateTime DateCreated { get; set; }
 
+        [Required]
         public DateTime StartDate { get; set; }
 
+        [Required]
         public TimeSpan StartHour { get; set; }
 
+        [Required]
         public int AvailableSpots { get; set; }
 
+        [Required]
         public int MinPlayers { get; set; }
 
+        [Required]
         public int MaxPlayers { get; set; }
 
+        [Required]
         public bool HasReservetion { get; set; }
 
         public string AdditionalInfo { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
 
-        public Guid CreatorId { get; set; }
-
+        [Required]
         public virtual User Creator { get; set; }
 
-        public int FieldId { get; set; }
-
+        [Required]
         public virtual Field Field { get; set; }
 
         public virtual ICollection<User> AppliedPlayers
