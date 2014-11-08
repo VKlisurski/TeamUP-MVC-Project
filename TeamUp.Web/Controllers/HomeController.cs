@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TeamUp.Models;
-using TeamUp.Web.Models;
 
 namespace TeamUp.Web.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            IEnumerable<GameViewModel> games = this.Data.Games.All().Select(GameViewModel.FromGame).ToList();
-            return View(games);
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
         }
     }
 }
