@@ -11,7 +11,14 @@ namespace TeamUp.Web.Controllers
     {
         public ActionResult Index()
         {
-            IEnumerable<GameViewModel> games = this.Data.Games.All().Select(GameViewModel.FromGame).ToList();
+            IEnumerable<GameViewModel> games = this.Data.Games.All()
+                .Where(g => g.AvailableSpots > 0)
+                .Where(g => g.StartDate > DateTime.Now)
+                .OrderBy(g => g.StartDate)
+                .ThenBy(g => g.StartHour)
+                .Select(GameViewModel.FromGame)
+                .ToList();
+
             return View(games);
         }
     }
