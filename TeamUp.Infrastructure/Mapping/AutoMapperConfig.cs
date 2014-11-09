@@ -9,9 +9,9 @@
 
     public static class AutoMapperConfig
     {
-        public static void Execute()
+        public static void Execute(Assembly assembly)
         {
-            var types = Assembly.GetCallingAssembly().GetExportedTypes();
+            var types = assembly.GetExportedTypes();
 
             LoadStandardMappings(types);
 
