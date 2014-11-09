@@ -1,15 +1,29 @@
 ﻿@model TeamUp.Web.Models.GameViewModel
 
-<div class="col-md-3">
-    <div class="list-group">
-        <a href="#" class="list-group-item active">
+<div class="col-md-3 text-center">
+
+    
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <a href="#" class="btn btn-success">Кандидатствай</a>
+                <a href="#" class="btn btn-success">Информация</a>
+            </div>
+        </li>
+        <li class="list-group-item">
             <b>Дата:</b> @string.Format("{0} {1}", Model.StartDate.Day, Model.StartDate.ToString("MMMM", new System.Globalization.CultureInfo("bg")))
-        </a>
-        <a href="#" class="list-group-item"><b>Свободни места:</b> @Model.AvailableSpots</a>
-        <a href="#" class="list-group-item"><b>Час:</b> @string.Format("{0:hh}:{1:mm}", Model.StartHour, Model.StartHour)</a>
-        <a href="#" class="list-group-item"> <b>Максимален брой играчи:</b> @Model.MaxPlayers</a>
-        <a href="#" class="list-group-item">
+        </li>
+        <li class="list-group-item">
+            <b>Свободни места:</b> @Model.AvailableSpots
+        </li>
+        <li class="list-group-item">
+            <b>Час:</b> @string.Format("{0:hh}:{1:mm}", Model.StartHour, Model.StartHour)
+        </li>
+        <li class="list-group-item">
+            <b>Максимален брой играчи:</b> @Model.MaxPlayers
+        </li>
+        <li class="list-group-item">
             <b>Цена:</b> @string.Format("{0}", Model.Price.ToString("c", new System.Globalization.CultureInfo("bg")))
-        </a>
-    </div>
+        </li>
+    </ul>
 </div>
