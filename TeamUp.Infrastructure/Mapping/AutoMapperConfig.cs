@@ -1,4 +1,4 @@
-﻿namespace TeamUp.Web.Infrastructure.Mapping
+﻿namespace TeamUp.Infrastructure.Mapping
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +11,7 @@
     {
         public static void Execute()
         {
-            var types = Assembly.GetExecutingAssembly().GetExportedTypes();
+            var types = Assembly.GetCallingAssembly().GetExportedTypes();
 
             LoadStandardMappings(types);
 

@@ -39,10 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper.Net4">
+    <Reference Include="AutoMapper.Net4, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -184,9 +186,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Mapping\AutoMapperConfig.cs" />
-    <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />
-    <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GameViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -266,6 +265,10 @@
     <ProjectReference Include="..\TeamUp.Data\TeamUp.Data.csproj">
       <Project>{00fbd982-cc18-46b1-996a-2cdc71bbcd75}</Project>
       <Name>TeamUp.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TeamUp.Infrastructure\TeamUp.Infrastructure.csproj">
+      <Project>{d4f00b2d-458a-42a1-8e2f-223071254574}</Project>
+      <Name>TeamUp.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\TeamUp.Models\TeamUp.Models.csproj">
       <Project>{67697f67-2342-4c27-9b31-e19576b364aa}</Project>

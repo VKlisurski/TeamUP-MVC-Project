@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
+using TeamUp.Infrastructure.Mapping;
 using TeamUp.Models;
-using TeamUp.Web.Infrastructure.Mapping;
 
 namespace TeamUp.Web.Models
 {
@@ -16,11 +16,6 @@ namespace TeamUp.Web.Models
         public GameViewModel()
         {
             this.appliedPlayers = new HashSet<User>();
-        }
-
-        public GameViewModel(Game game)
-        {
-
         }
 
         [Required]
