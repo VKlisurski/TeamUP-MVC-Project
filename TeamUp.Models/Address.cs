@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TeamUp.Models.Base;
 namespace TeamUp.Models
 {
-    public class Address
+    public class Address : AuditInfo
     {
         public int Id { get; set; }
 

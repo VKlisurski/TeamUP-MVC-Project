@@ -2,8 +2,9 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using TeamUp.Models.Base;
 
-    public class Field
+    public class Field : AuditInfo
     {
         private ICollection<Game> games;
 

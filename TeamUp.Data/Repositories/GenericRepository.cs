@@ -5,8 +5,9 @@
     using System.Linq;
     using System.Linq.Expressions;
     using TeamUp.Data.Contracts;
+    using TeamUp.Models.Base;
 
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, IAuditInfo
     {
         private readonly DbContext context;
         private readonly IDbSet<T> set;
@@ -19,7 +20,7 @@
 
         public IQueryable<T> All()
         {
-            return this.set;
+            return this.set.Where(x => x.DeletedOn == null);
         }
 
         public IQueryable<T> SearchFor(Expression<Func<T, bool>> conditions)
@@ -29,16 +30,19 @@
 
         public void Add(T entity)
         {
+            entity.CreatedOn = DateTime.Now;
             this.ChangeEntityState(entity, EntityState.Added);
         }
 
         public void Update(T entity)
         {
+            entity.ModifiedOn = DateTime.Now;
             this.ChangeEntityState(entity, EntityState.Modified);
         }
 
         public void Delete(T entity)
         {
+            entity.DeletedOn = DateTime.Now;
             this.ChangeEntityState(entity, EntityState.Deleted);
         }
 

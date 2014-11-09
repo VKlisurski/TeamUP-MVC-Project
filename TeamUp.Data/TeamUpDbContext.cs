@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TeamUp.Data.Contracts;
 using TeamUp.Models;
+using TeamUp.Models.Base;
 
 namespace TeamUp.Data
 {

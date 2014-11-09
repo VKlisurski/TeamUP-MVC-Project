@@ -3,21 +3,20 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using TeamUp.Models.Base;
 
-    public class Game
+    public class Game : AuditInfo
     {
         private ICollection<User> appliedPlayers;
 
         public Game()
         {
             this.appliedPlayers = new HashSet<User>();
+            this.CreatedOn = DateTime.Now;
         }
 
         [Key]
         public int Id { get; set; }
-
-        [Required]
-        public DateTime DateCreated { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }

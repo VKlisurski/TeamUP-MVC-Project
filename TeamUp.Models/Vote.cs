@@ -6,8 +6,9 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using TeamUp.Models.Base;
 
-    public class Vote
+    public class Vote : AuditInfo
     {
         public int Id { get; set; }
 

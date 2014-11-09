@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="Base\AuditInfo.cs" />
+    <Compile Include="Base\IAuditInfo.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="User.cs" />
