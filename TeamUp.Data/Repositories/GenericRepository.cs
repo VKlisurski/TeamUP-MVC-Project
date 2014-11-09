@@ -23,6 +23,11 @@
             return this.set.Where(x => x.DeletedOn == null);
         }
 
+        public IQueryable<T> AllWithDeleted()
+        {
+            return this.set;
+        }
+
         public IQueryable<T> SearchFor(Expression<Func<T, bool>> conditions)
         {
             return this.All().Where(conditions);
@@ -43,7 +48,7 @@
         public void Delete(T entity)
         {
             entity.DeletedOn = DateTime.Now;
-            this.ChangeEntityState(entity, EntityState.Deleted);
+            this.ChangeEntityState(entity, EntityState.Modified);
         }
 
         public void Detach(T entity)

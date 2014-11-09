@@ -4,6 +4,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
     using TeamUp.Models.Base;
@@ -38,6 +39,7 @@
 
         public System.DateTime? ModifiedOn { get; set; }
 
+        [Index]
         public System.DateTime? DeletedOn { get; set; }
     }
 }

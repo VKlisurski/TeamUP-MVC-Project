@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamUp.Models", "TeamUp.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamUp.Data", "TeamUp.Data\TeamUp.Data.csproj", "{00FBD982-CC18-46B1-996A-2CDC71BBCD75}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{70751F62-1C97-4EFE-BBE6-E5C26B149996}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{341B61B9-EF35-4105-9F61-33F9BCB17548}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6B1E92B9-2ECC-4D00-ACCF-5959730BE613}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +42,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{63F5D56E-BEB9-482A-B48B-DD2A73785CD6} = {341B61B9-EF35-4105-9F61-33F9BCB17548}
+		{3D25CEF1-36E1-4E17-9961-4D99090A56DE} = {6B1E92B9-2ECC-4D00-ACCF-5959730BE613}
+		{67697F67-2342-4C27-9B31-E19576B364AA} = {70751F62-1C97-4EFE-BBE6-E5C26B149996}
+		{00FBD982-CC18-46B1-996A-2CDC71BBCD75} = {70751F62-1C97-4EFE-BBE6-E5C26B149996}
 	EndGlobalSection
 EndGlobal
