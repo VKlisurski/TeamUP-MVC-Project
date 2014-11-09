@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using TeamUp.Web.Models;
-using AutoMapper.QueryableExtensions;
-
-namespace TeamUp.Web.Controllers
+﻿namespace TeamUp.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using TeamUp.Web.Models;
+    using AutoMapper.QueryableExtensions;
+    using TeamUp.Data.Contracts;
+
     public class HomeController : BaseController
     {
+        public HomeController(ITeamUpData data)
+            : base(data)
+        {
+
+        }
+
         public ActionResult Index()
         {
             IEnumerable<GameViewModel> games = this.Data.Games.All()
@@ -24,4 +31,4 @@ namespace TeamUp.Web.Controllers
             return View(games);
         }
     }
-} 
+}

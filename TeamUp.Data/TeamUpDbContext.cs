@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TeamUp.Data.Contracts;
-using TeamUp.Models;
-using TeamUp.Models.Base;
-
-namespace TeamUp.Data
+﻿namespace TeamUp.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using TeamUp.Data.Contracts;
+    using TeamUp.Models;
+    using TeamUp.Models.Base;
+
+    using Microsoft.AspNet.Identity.EntityFramework;
+
     public class TeamUpDbContext : IdentityDbContext<User>
     {
         public TeamUpDbContext()

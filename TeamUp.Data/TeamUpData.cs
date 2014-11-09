@@ -16,11 +16,6 @@
         private readonly DbContext context;
         private readonly IDictionary<Type, object> repositories;
 
-        public TeamUpData()
-            : this(new TeamUpDbContext())
-        {
-        }
-
         public TeamUpData(DbContext context)
         {
             this.context = context;

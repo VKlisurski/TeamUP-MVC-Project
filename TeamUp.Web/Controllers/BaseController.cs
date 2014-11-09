@@ -6,34 +6,16 @@
     using System.Web;
     using System.Web.Mvc;
     using TeamUp.Data;
+    using TeamUp.Data.Contracts;
 
 
     public class BaseController : Controller
     {
-       private TeamUpData data;
-
-        public BaseController()
-            :this(new TeamUpData())
-        {
-
-        }
-
-        public BaseController(TeamUpData data)
+        public BaseController(ITeamUpData data)
         {
             this.Data = data;
         }
 
-        public TeamUpData Data
-        {
-            get
-            {
-                return this.data;
-            }
-
-            private set
-            {
-                this.data = value;
-            }
-        }
+        public ITeamUpData Data { get; set; }
     }
 }
