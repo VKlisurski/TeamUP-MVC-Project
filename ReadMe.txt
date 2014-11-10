@@ -1,0 +1,1 @@
+This app requires KendoUI, UI for ASP.NET MVC. You can download it from here: http://www.telerik.com/download/kendo-ui
