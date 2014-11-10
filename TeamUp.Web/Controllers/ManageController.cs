@@ -1,16 +1,16 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using TeamUp.Web.Models;
-using TeamUp.Models;
-
-namespace TeamUp.Web.Controllers
+﻿namespace TeamUp.Web.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using TeamUp.Web.Models;
+    using TeamUp.Models;
+
     [Authorize]
     public class ManageController : Controller
     {

@@ -28,11 +28,14 @@
             return userIdentity;
         }
 
-        public string Phone { get; set; }
-
         public string ImgPath { get; set; }
 
         public virtual ICollection<Game> Games { get; set; }
+
+        [Required]
+        [MinLength(3)]
+        [MaxLength(15)]
+        public string TeamUpUsername { get; set; }
 
         public System.DateTime CreatedOn { get; set; }
 

@@ -15,14 +15,18 @@
             this.games = new HashSet<Game>();
         }
 
-        public string Phone { get; set; }
+        public string PhoneNUmber { get; set; }
 
         public string ImgPath { get; set; }
 
         [Required]
         [MinLength(3)]
         [MaxLength(15)]
-        public string Username { get; set; }
+        public string TeamUpUsername { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
 
         public virtual ICollection<Game> Games { get; set; }
     }

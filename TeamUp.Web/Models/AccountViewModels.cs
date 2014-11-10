@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace TeamUp.Web.Models
+﻿namespace TeamUp.Web.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -50,8 +50,9 @@ namespace TeamUp.Web.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Потребителско име")]
-        public string Username { get; set; }
+        [EmailAddress]
+        [Display(Name = "Поща")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -72,10 +73,11 @@ namespace TeamUp.Web.Models
         [Required]
         [StringLength(15, ErrorMessage = "Невалидно потребителско име"), MinLength(3)]
         [Display(Name = "Потребителско име")]
-        public string Username { get; set; }
+        public string TeamUpUsername { get; set; }
 
         [Required]
         [StringLength(10, ErrorMessage = "Невалиден телефонен номер."), MinLength(10)]
+        [Phone]
         [Display(Name = "Телефон")]
         public string PhoneNumber { get; set; }
 

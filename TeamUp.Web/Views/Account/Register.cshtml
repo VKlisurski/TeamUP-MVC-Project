@@ -18,15 +18,15 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.TeamUpUsername, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.TeamUpUsername, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @value = "0885888888" })
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "0885888888" })
         </div>
     </div>
     <div class="form-group">
