@@ -257,9 +257,12 @@
     <Content Include="Views\Shared\DisplayTemplates\FieldViewModel.cshtml" />
     <Content Include="Views\Fields\_FieldsHome.cshtml" />
     <Content Include="Views\Manage\ChangePhoneNumber.cshtml" />
+    <Content Include="Views\Users\_UsersHome.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UserViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Avatars\" />
     <Folder Include="Content\Images\Fields\" />
   </ItemGroup>
   <ItemGroup>

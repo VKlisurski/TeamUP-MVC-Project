@@ -13,11 +13,14 @@
     public class User : IdentityUser, IAuditInfo
     {
         private ICollection<Game> games;
+        private ICollection<Vote> votes;
 
         public User()
         {
             this.games = new HashSet<Game>();
+            this.votes = new HashSet<Vote>();
             this.CreatedOn = DateTime.Now;
+            this.ImgPath = "~/Content/Images/Avatars/default.jpg";
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
@@ -29,8 +32,6 @@
         }
 
         public string ImgPath { get; set; }
-
-        public virtual ICollection<Game> Games { get; set; }
 
         [Required]
         [MinLength(3)]
@@ -45,5 +46,29 @@
 
         [Index]
         public System.DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<Game> Games
+        {
+            get
+            {
+                return this.games;
+            }
+            set
+            {
+                this.games = value;
+            }
+        }
+
+        public virtual ICollection<Vote> Votes
+        {
+            get
+            {
+                return this.votes;
+            }
+            set
+            {
+                this.votes = value;
+            }
+        }
     }
 }

@@ -2214,8 +2214,8 @@ fieldset[disabled] .btn-danger.active {
 
 .btn-success {
   color: #ffffff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+  background-color: lightgreen;
+  border-color: lightgreen;
 }
 
 .btn-success:hover,
@@ -5255,7 +5255,7 @@ a.thumbnail:focus {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 8px 15px;
   margin-bottom: -1px;
   background-color: #ffffff;
   border: 1px solid #dddddd;

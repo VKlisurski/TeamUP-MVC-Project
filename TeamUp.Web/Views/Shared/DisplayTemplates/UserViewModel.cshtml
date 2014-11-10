@@ -1,0 +1,26 @@
+﻿@model TeamUp.Web.Models.UserViewModel
+
+<div class="col-md-3 text-center top-players">
+    <p>@Model.TeamUpUsername</p>
+    <div class="col-md-4">
+        <div id="img-wrapper">
+            <img class="image" src="@Model.ImgPath" />
+        </div>
+    </div>
+    <div class="col-md-8">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <b>Умения:</b> @string.Format("{0:0.0}", Model.Votes.Average(v => v.SkillsRating))
+            </li>
+            <li class="list-group-item">
+                <b>Отборна игра:</b> @string.Format("{0:0.0}", Model.Votes.Average(v => v.TeamPlayerRating))
+            </li>
+            <li class="list-group-item">
+                <b>Мачове:</b> @Model.Votes.Count()
+            </li>
+            <li class="list-group-item">
+                <b>Грубост:</b> @string.Format("{0:0.0}", Model.Votes.Average(v => v.CruidityRating))
+            </li>
+        </ul>
+    </div>
+</div>

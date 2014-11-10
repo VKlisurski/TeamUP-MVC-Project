@@ -49,5 +49,27 @@
 
             return PartialView("~/Views/Fields/_FieldsHome.cshtml", fields);
         }
+
+        [ChildActionOnly]
+        public ActionResult LoadTopUsers()
+        {
+            IEnumerable<UserViewModel> users = this.Data.Users.All()
+            .Where(g => g.Votes.Count > 0)
+            .OrderBy(g => g.Votes.Average(v => v.SkillsRating))
+            .ThenBy(g => g.Votes.Average(v => v.TeamPlayerRating))
+            .Take(4)
+            .AsQueryable()
+            .Project()
+            .To<UserViewModel>();
+
+            if (users.Count() > 0)
+            {
+                return PartialView("~/Views/Users/_UsersHome.cshtml", users);
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
