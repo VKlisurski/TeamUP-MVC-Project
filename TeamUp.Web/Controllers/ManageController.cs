@@ -47,6 +47,8 @@
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ChangedPhoneSuccess ? "Вашият номер беше променен успешно."
+                : message == ManageMessageId.ChangedPhoneFailed ? "Неуспешна промяна на номер."
                 : "";
 
             var model = new IndexViewModel
@@ -122,6 +124,39 @@
                 await UserManager.SmsService.SendAsync(message);
             }
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
+        }
+
+        //
+        // GET: /Manage/ChangePhoneNumber
+        public ActionResult ChangePhoneNumber()
+        {
+            return View();
+        }
+
+        // POST: /Manage/ChangePhoneNumber
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePhoneNumber(AddPhoneNumberViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
+            var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.Number, code);
+
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInAsync(user, isPersistent: false);
+                }
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangedPhoneSuccess });
+            }
+
+            return RedirectToAction("Index", new { Message = ManageMessageId.ChangedPhoneFailed });
         }
 
         //
@@ -366,6 +401,8 @@
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            ChangedPhoneSuccess,
+            ChangedPhoneFailed,
             Error
         }
 

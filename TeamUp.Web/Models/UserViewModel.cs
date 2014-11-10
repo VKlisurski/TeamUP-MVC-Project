@@ -15,7 +15,7 @@
             this.games = new HashSet<Game>();
         }
 
-        public string PhoneNUmber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string ImgPath { get; set; }
 

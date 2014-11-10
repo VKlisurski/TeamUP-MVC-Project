@@ -256,6 +256,7 @@
     <Content Include="Views\Games\_GamesHome.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\FieldViewModel.cshtml" />
     <Content Include="Views\Fields\_FieldsHome.cshtml" />
+    <Content Include="Views\Manage\ChangePhoneNumber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
