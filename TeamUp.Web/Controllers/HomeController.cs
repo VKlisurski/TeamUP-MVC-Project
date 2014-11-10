@@ -55,8 +55,8 @@
         {
             IEnumerable<UserViewModel> users = this.Data.Users.All()
             .Where(g => g.Votes.Count > 0)
-            .OrderBy(g => g.Votes.Average(v => v.SkillsRating))
-            .ThenBy(g => g.Votes.Average(v => v.TeamPlayerRating))
+            .OrderByDescending(g => g.Votes.Average(v => v.SkillsRating))
+            .ThenByDescending(g => g.Votes.Average(v => v.TeamPlayerRating))
             .Take(4)
             .AsQueryable()
             .Project()

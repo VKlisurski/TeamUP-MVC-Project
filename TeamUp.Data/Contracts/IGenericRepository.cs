@@ -20,5 +20,7 @@
         void Delete(T entity);
 
         void Detach(T entity);
+
+        T Find(object id);
     }
 }

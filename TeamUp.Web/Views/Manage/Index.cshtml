@@ -82,4 +82,12 @@
             }*@
         @*</dd>*@
     </dl>
+
+    @using (Html.BeginForm("AvatarUpload", "File", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken();
+
+        <input type="File" name="avatar" class="btn" id="avatar" value="Избери" />
+        <button type="submit" class="btn btn-primary">Качи</button>
+    }
 </div>

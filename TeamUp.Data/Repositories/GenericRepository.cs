@@ -56,6 +56,11 @@
             this.ChangeEntityState(entity, EntityState.Detached);
         }
 
+        public T Find(object id)
+        {
+            return this.set.Find(id);
+        }
+
         private void ChangeEntityState(T entity, EntityState state)
         {
             var entry = this.context.Entry(entity);
