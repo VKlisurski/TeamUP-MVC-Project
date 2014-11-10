@@ -22,6 +22,7 @@
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 1 * 60)]
         public ActionResult LoadLatestGames()
         {
             IEnumerable<GameViewModel> games = this.Data.Games.All()
@@ -38,6 +39,7 @@
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 10 * 60)]
         public ActionResult LoadTopFields()
         {
             IEnumerable<FieldViewModel> fields = this.Data.Fields.All()
@@ -51,6 +53,7 @@
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 5 * 60)]
         public ActionResult LoadTopUsers()
         {
             IEnumerable<UserViewModel> users = this.Data.Users.All()

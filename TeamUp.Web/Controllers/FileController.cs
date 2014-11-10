@@ -15,6 +15,7 @@
         }
 
         [HttpPost]
+        [ChildActionOnly]
         [ValidateAntiForgeryToken]
         public ActionResult AvatarUpload(HttpPostedFileBase avatar)
         {
