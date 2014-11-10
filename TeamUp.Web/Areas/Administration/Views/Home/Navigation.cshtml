@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Navigation";
+}
+
+<h2>Navigation</h2>
+
+@(Html.Kendo()
+    .Calendar()
+    .Name("adminCalendar")
+    .Min(DateTime.Now)
+    .Max(DateTime.Now.AddDays(40)))

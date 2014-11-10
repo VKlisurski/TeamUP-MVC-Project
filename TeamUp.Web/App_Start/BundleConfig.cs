@@ -8,8 +8,39 @@
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            bundles.IgnoreList.Clear();
+
+            RegisterScriptBundles(bundles);
+            RegisterStyleBundles(bundles);
+
+            BundleTable.EnableOptimizations = true;
+        }
+
+        private static void RegisterStyleBundles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/content/css").Include(
+                      "~/Content/bootstrap.css"));
+
+            // AllMyCss must not exist. This is a hack that fixes a bug with the bundle.
+            bundles.Add(new StyleBundle("~/content/kendo/AllMyCss").Include(
+                "~/Content/kendo/kendo.common.min.css",
+                "~/Content/kendo/kendo.common-bootstrap.min.css",
+                "~/Content/kendo/kendo.silver.min.css"));
+
+            bundles.Add(new StyleBundle("~/content/custom").Include(
+                      "~/Content/Site.css"));
+        }
+
+        private static void RegisterScriptBundles(BundleCollection bundles)
+        {
+
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                "~/Scripts/kendo/kendo.all.min.js",
+                "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery")
+                .Include("~/Scripts/kendo/jquery.min.js"));
+                //.Include("~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -22,14 +53,6 @@
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
-
-            bundles.Add(new StyleBundle("~/bundles/css").Include(
-                      "~/Content/Css/bootstrap.css",
-                      "~/Content/Css/site.css"));
-
-            // Set EnableOptimizations to false for debugging. For more information,
-            // visit http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
         }
     }
 }
