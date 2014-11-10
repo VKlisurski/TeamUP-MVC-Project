@@ -2,9 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@model IEnumerable<TeamUp.Web.Models.GameViewModel>
-
-<div class="row">
-    <h2 class="details-heading">Предстоящи Мачове</h2>
-    @Html.DisplayForModel()
-</div>
+@{
+    Html.RenderAction("LoadLatestGames");
+    Html.RenderAction("LoadTopFields");
+}

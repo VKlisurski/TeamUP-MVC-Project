@@ -1,18 +1,18 @@
-﻿namespace TeamUp.Models
+﻿namespace TeamUp.Web.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using TeamUp.Models.Base;
+    using TeamUp.Infrastructure.Mapping;
+    using TeamUp.Models;
 
-    public class Field : AuditInfo
+    public class FieldViewModel : IMapFrom<Field>
     {
         private ICollection<Game> games;
 
-        public Field()
+        public FieldViewModel()
         {
             this.games = new HashSet<Game>();
-            this.Img = "Content\\Images\\Fields\\default.jpg";
         }
 
         [Required]

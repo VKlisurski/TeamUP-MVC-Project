@@ -1,26 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using TeamUp.Infrastructure.Mapping;
-using TeamUp.Models;
-
-namespace TeamUp.Web.Models
+﻿namespace TeamUp.Web.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using TeamUp.Infrastructure.Mapping;
+    using TeamUp.Models;
+
     public class GameViewModel : IMapFrom<Game>
     {
-        private ICollection<User> appliedPlayers;
-
-        public GameViewModel()
-        {
-            this.appliedPlayers = new HashSet<User>();
-        }
-
-        [Required]
-        public DateTime DateCreated { get; set; }
-
         [Required]
         public DateTime StartDate { get; set; }
 
@@ -37,5 +23,8 @@ namespace TeamUp.Web.Models
         [Required]
         [Range(20, 200)]
         public decimal Price { get; set; }
+
+        [Required]
+        public virtual Field Field { get; set; }
     }
 }

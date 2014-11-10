@@ -18,6 +18,12 @@
 
         public ActionResult Index()
         {
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult LoadLatestGames()
+        {
             IEnumerable<GameViewModel> games = this.Data.Games.All()
                 .Where(g => g.AvailableSpots > 0)
                 .Where(g => g.StartDate > DateTime.Now)
@@ -28,7 +34,20 @@
                 .Project()
                 .To<GameViewModel>();
 
-            return View(games);
+            return PartialView("~/Views/Games/_GamesHome.cshtml", games);
+        }
+
+        [ChildActionOnly]
+        public ActionResult LoadTopFields()
+        {
+            IEnumerable<FieldViewModel> fields = this.Data.Fields.All()
+                .OrderBy(f => f.Games.Count)
+                .Take(4)
+                .AsQueryable()
+                .Project()
+                .To<FieldViewModel>();
+
+            return PartialView("~/Views/Fields/_FieldsHome.cshtml", fields);
         }
     }
 }

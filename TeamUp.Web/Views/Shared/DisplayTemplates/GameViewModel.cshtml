@@ -2,7 +2,6 @@
 
 <div class="col-md-3 text-center">
 
-    
     <ul class="list-group">
         <li class="list-group-item">
             <div class="row">
@@ -11,16 +10,18 @@
             </div>
         </li>
         <li class="list-group-item">
-            <b>Дата:</b> @string.Format("{0} {1}", Model.StartDate.Day, Model.StartDate.ToString("MMMM", new System.Globalization.CultureInfo("bg")))
+            <b>Начало:</b>
+            @string.Format("{0} {1}", Model.StartDate.Day, Model.StartDate.ToString("MMMM", new System.Globalization.CultureInfo("bg")))
+            @string.Format("{0:hh}:{1:mm}", Model.StartHour, Model.StartHour)
         </li>
         <li class="list-group-item">
             <b>Свободни места:</b> @Model.AvailableSpots
         </li>
         <li class="list-group-item">
-            <b>Час:</b> @string.Format("{0:hh}:{1:mm}", Model.StartHour, Model.StartHour)
+            <b>Максимален брой играчи:</b> @Model.MaxPlayers
         </li>
         <li class="list-group-item">
-            <b>Максимален брой играчи:</b> @Model.MaxPlayers
+            <b>Игрище:</b> @Model.Field.Name
         </li>
         <li class="list-group-item">
             <b>Цена:</b> @string.Format("{0}", Model.Price.ToString("c", new System.Globalization.CultureInfo("bg")))
