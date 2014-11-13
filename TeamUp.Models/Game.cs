@@ -37,7 +37,6 @@
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
         public virtual User Creator { get; set; }
 
         [Required]

@@ -85,7 +85,7 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                var game = this.Data.Games.Find(model.Id.Value);
+                Game game = this.Data.Games.Find(model.Id.Value);
                 game.StartDate = model.StartDate;
                 game.AvailableSpots = model.AvailableSpots;
                 game.HasReservetion = model.HasReservetion;

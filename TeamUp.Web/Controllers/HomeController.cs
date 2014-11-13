@@ -42,7 +42,7 @@
         public ActionResult LoadTopFields()
         {
             IEnumerable<FieldViewModel> fields = this.Data.Fields.All()
-                .OrderBy(f => f.Games.Count)
+                .OrderByDescending(f => f.GamesCount)
                 .Take(4)
                 .AsQueryable()
                 .Project()

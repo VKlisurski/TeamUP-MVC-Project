@@ -7,7 +7,7 @@
 
 @(Html.Kendo()
     .Grid<TeamUp.Web.Areas.Administration.Models.GameViewModel>()
-    .Name("grid")
+    .Name("admingrid")
     .Columns(cols =>
         {
             cols.Bound(pr => pr.StartDate).Format("{0:dd.MM.yyyy HH:mm}").EditorTemplateName("DateTime").Width(30);
@@ -39,7 +39,7 @@
         .Model(m => m.Id(adv => adv.Id))
         .Read(read => read.Action("Read", ControllerName))
         .Create(create => create.Action("Create", ControllerName))
-        .PageSize(7)
+        .PageSize(5)
         .Update(update => update.Action("Update", ControllerName))
         .Destroy(destroy => destroy.Action("Destroy", ControllerName))
         ))

@@ -19,6 +19,13 @@
         [Display(Name = "Начало")]
         public DateTime StartDate { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
+        [Display(Name = "Създател")]
+        public string CreatorName { get; set; }
+
+        [Display(Name = "Игрище")]
+        public string FieldName { get; set; }
+
         [Required]
         [Display(Name = "Места")]
         public int AvailableSpots { get; set; }
@@ -39,10 +46,8 @@
         [Display(Name = "Цена")]
         public decimal Price { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
-        public string CreatorName { get; set; }
-
-        public string FieldName { get; set; }
+        [Display(Name = "Игрище")]
+        public Field Field { get; set; }
         
         public void CreateMappings(IConfiguration configuration)
         {

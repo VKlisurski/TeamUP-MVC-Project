@@ -7,11 +7,8 @@
 
     public class Field : AuditInfo
     {
-        private ICollection<Game> games;
-
         public Field()
         {
-            this.games = new HashSet<Game>();
             this.Img = "Content\\Images\\Fields\\default.jpg";
         }
 
@@ -21,6 +18,8 @@
         public string Name { get; set; }
 
         public int Id { get; set; }
+
+        public int GamesCount { get; set; }
 
         [Required]
         public string Phone { get; set; }
@@ -40,7 +39,5 @@
 
         [Required]
         public virtual Address Address { get; set; }
-
-        public virtual ICollection<Game> Games { get; set; }
     }
 }
