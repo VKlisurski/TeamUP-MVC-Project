@@ -12,7 +12,6 @@
         public Game()
         {
             this.appliedPlayers = new HashSet<User>();
-            this.CreatedOn = DateTime.Now;
         }
 
         [Key]
@@ -20,9 +19,6 @@
 
         [Required]
         public DateTime StartDate { get; set; }
-
-        [Required]
-        public TimeSpan StartHour { get; set; }
 
         [Required]
         public int AvailableSpots { get; set; }

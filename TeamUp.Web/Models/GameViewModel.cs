@@ -11,9 +11,6 @@
         public DateTime StartDate { get; set; }
 
         [Required]
-        public TimeSpan StartHour { get; set; }
-
-        [Required]
         [Range(0, 12)]
         public int AvailableSpots { get; set; }
         [Required]

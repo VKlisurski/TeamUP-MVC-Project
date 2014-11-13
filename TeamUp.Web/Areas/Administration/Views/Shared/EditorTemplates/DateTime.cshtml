@@ -1,0 +1,4 @@
+﻿@model DateTime?
+
+@(Html.Kendo().DateTimePickerFor(m => m)
+.Min(DateTime.Now.AddMinutes(30)))

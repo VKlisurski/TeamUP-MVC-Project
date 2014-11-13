@@ -29,7 +29,6 @@
                 .Where(g => g.AvailableSpots > 0)
                 .Where(g => g.StartDate > DateTime.Now)
                 .OrderBy(g => g.StartDate)
-                .ThenBy(g => g.StartHour)
                 .Take(4)
                 .AsQueryable()
                 .Project()

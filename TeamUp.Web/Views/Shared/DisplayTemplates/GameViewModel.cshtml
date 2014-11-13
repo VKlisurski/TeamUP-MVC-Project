@@ -11,8 +11,7 @@
         </li>
         <li class="list-group-item">
             <b>Начало:</b>
-            @string.Format("{0} {1}", Model.StartDate.Day, Model.StartDate.ToString("MMMM", new System.Globalization.CultureInfo("bg")))
-            @string.Format("{0:hh}:{1:mm}", Model.StartHour, Model.StartHour)
+            @string.Format("{0} {1} {2:HH:mm}", Model.StartDate.Day, Model.StartDate.ToString("MMMM", new System.Globalization.CultureInfo("bg")), Model.StartDate)
         </li>
         <li class="list-group-item">
             <b>Свободни места:</b> @Model.AvailableSpots

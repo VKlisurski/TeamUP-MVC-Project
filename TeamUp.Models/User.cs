@@ -19,7 +19,6 @@
         {
             this.games = new HashSet<Game>();
             this.votes = new HashSet<Vote>();
-            this.CreatedOn = DateTime.Now;
             this.ImgPath = "~/Content/Images/Avatars/default.jpg";
         }
 

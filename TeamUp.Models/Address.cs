@@ -1,5 +1,6 @@
 ﻿namespace TeamUp.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using TeamUp.Models.Base;
 

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Мачове";
+    const string ControllerName = "Game";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+    .Grid<TeamUp.Web.Areas.Administration.Models.GameViewModel>()
+    .Name("grid")
+    .Columns(cols =>
+        {
+            cols.Bound(pr => pr.StartDate).Format("{0:dd.MM.yyyy}").EditorTemplateName("DateTime").Width(30);
+            cols.Bound(pr => pr.AvailableSpots);
+            cols.Bound(pr => pr.MinPlayers);
+            cols.Bound(pr => pr.MaxPlayers);
+            cols.Bound(pr => pr.HasReservetion).ClientTemplate("#= (HasReservetion == true) ? 'Да' : 'Не' #");
+            cols.Bound(pr => pr.CreatorName);
+            cols.Bound(pr => pr.FieldName);
+            cols.Bound(pr => pr.Price);
+            cols.Bound(pr => pr.CreatedOn).Hidden();
+            cols.Bound(pr => pr.ModifiedOn).Hidden();
+        })
+    .Sortable()
+    .Pageable()
+    .Editable(edit =>
+        {
+            edit.Mode(GridEditMode.PopUp);
+        })
+    .ToolBar(toolbar =>
+        {
+            toolbar.Create();
+        })
+    .DataSource(data => data
+        .Ajax() 
+        .Model(m => m.Id(adv => adv.Id))
+        .Read(read => read.Action("Read", ControllerName))
+        .Create(create => create.Action("Create", ControllerName))
+        .PageSize(7)
+        ))
