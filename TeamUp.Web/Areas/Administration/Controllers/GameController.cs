@@ -79,5 +79,39 @@
 
             return Json(new[] { model}.ToDataSourceResult(request, ModelState));
         }
+
+        [HttpPost]
+        public ActionResult Update([DataSourceRequest] DataSourceRequest request, GameViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                var game = this.Data.Games.Find(model.Id.Value);
+                game.StartDate = model.StartDate;
+                game.AvailableSpots = model.AvailableSpots;
+                game.HasReservetion = model.HasReservetion;
+                game.MinPlayers = model.MinPlayers;
+                game.MaxPlayers = model.MaxPlayers;
+                game.Price = model.Price;
+
+                this.Data.Games.Update(game);
+
+                this.Data.SaveChanges();
+            }
+
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState));
+        }
+
+        [HttpPost]
+        public ActionResult Destroy([DataSourceRequest] DataSourceRequest request, GameViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                var game = this.Data.Games.Find(model.Id);
+                this.Data.Games.Delete(game);
+                this.Data.SaveChanges();
+            }
+
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState));
+        }
     }
 }

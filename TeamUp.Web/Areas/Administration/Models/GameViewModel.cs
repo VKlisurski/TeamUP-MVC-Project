@@ -16,7 +16,7 @@
         public int? Id { get; set; }
 
         [DataType(DataType.DateTime)]
-        [Display(Name = "Дата")]
+        [Display(Name = "Начало")]
         public DateTime StartDate { get; set; }
 
         [Required]

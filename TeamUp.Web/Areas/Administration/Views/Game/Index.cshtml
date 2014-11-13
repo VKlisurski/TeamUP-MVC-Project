@@ -10,7 +10,7 @@
     .Name("grid")
     .Columns(cols =>
         {
-            cols.Bound(pr => pr.StartDate).Format("{0:dd.MM.yyyy}").EditorTemplateName("DateTime").Width(30);
+            cols.Bound(pr => pr.StartDate).Format("{0:dd.MM.yyyy HH:mm}").EditorTemplateName("DateTime").Width(30);
             cols.Bound(pr => pr.AvailableSpots);
             cols.Bound(pr => pr.MinPlayers);
             cols.Bound(pr => pr.MaxPlayers);
@@ -18,11 +18,13 @@
             cols.Bound(pr => pr.CreatorName);
             cols.Bound(pr => pr.FieldName);
             cols.Bound(pr => pr.Price);
-            cols.Bound(pr => pr.CreatedOn).Hidden();
-            cols.Bound(pr => pr.ModifiedOn).Hidden();
+            cols.Bound(pr => pr.CreatedOn).Format("{0:dd.MM.yyyy}").EditorTemplateName("DateTime").Width(30).Hidden();
+            cols.Bound(pr => pr.ModifiedOn).Format("{0:dd.MM.yyyy}").EditorTemplateName("DateTime").Width(30).Hidden();
+            cols.Command(com => com.Edit()).Title("Промени");
+            cols.Command(com => com.Destroy()).Title("Изтрий");
         })
     .Sortable()
-    .Pageable()
+    .Pageable(page => page.Refresh(true))
     .Editable(edit =>
         {
             edit.Mode(GridEditMode.PopUp);
@@ -31,10 +33,13 @@
         {
             toolbar.Create();
         })
+    .ColumnMenu()
     .DataSource(data => data
         .Ajax() 
         .Model(m => m.Id(adv => adv.Id))
         .Read(read => read.Action("Read", ControllerName))
         .Create(create => create.Action("Create", ControllerName))
         .PageSize(7)
+        .Update(update => update.Action("Update", ControllerName))
+        .Destroy(destroy => destroy.Action("Destroy", ControllerName))
         ))
