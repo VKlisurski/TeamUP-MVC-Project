@@ -3,9 +3,8 @@
     using System;
     using System.Linq;
     using System.Linq.Expressions;
-    using TeamUp.Models.Base;
 
-    public interface IGenericRepository<T> where T : class, IAuditInfo
+    public interface IGenericRepository<T> where T : class
     {
         IQueryable<T> All();
 

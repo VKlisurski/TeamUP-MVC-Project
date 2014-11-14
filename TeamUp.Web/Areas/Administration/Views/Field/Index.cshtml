@@ -1,23 +1,24 @@
 ﻿@{
-    ViewBag.Title = "Мачове";
-    const string ControllerName = "Game";
+    ViewBag.Title = "Игрища";
+    const string ControllerName = "Field";
 }
 
 <h2>@ViewBag.Title</h2>
 
 @(Html.Kendo()
-    .Grid<TeamUp.Web.Areas.Administration.Models.GameViewModel>()
-    .Name("adminGridGames")
+    .Grid<TeamUp.Web.Areas.Administration.Models.FieldViewModel>()
+    .Name("adminGridFields")
     .Columns(cols =>
         {
-            cols.Bound(pr => pr.StartDate).Format("{0:dd.MM.yyyy HH:mm}").EditorTemplateName("DateTime").Width(30);
-            cols.Bound(pr => pr.AvailableSpots);
-            cols.Bound(pr => pr.MinPlayers);
-            cols.Bound(pr => pr.MaxPlayers);
-            cols.Bound(pr => pr.HasReservetion).ClientTemplate("#= (HasReservetion == true) ? 'Да' : 'Не' #");
-            cols.Bound(pr => pr.CreatorName);
-            cols.Bound(pr => pr.FieldName);
-            cols.Bound(pr => pr.Price);
+            cols.Bound(pr => pr.Name);
+            cols.Bound(pr => pr.Img).ClientTemplate("<img src='../../../#= Img #' width='100'/>").Width(50);
+            cols.Bound(pr => pr.Phone);
+            //cols.Bound(pr => pr.Website).ClientTemplate("<a href='#= Website #'>Сайт</a>").Width(50);
+            cols.Bound(pr => pr.Website).ClientTemplate("#if(Website!=null) {# <a href='Website'>Сайт</a> #}#").Width(50);
+            cols.Bound(pr => pr.City);
+            cols.Bound(pr => pr.Neighbourhood).Width(50);
+            cols.Bound(pr => pr.Street).Width(60);
+            cols.Bound(pr => pr.StreetNumber).Width(10);
             cols.Command(com => com.Edit()).Title("Промени");
             cols.Command(com => com.Destroy()).Title("Изтрий");
         })
@@ -33,7 +34,7 @@
         })
     .ColumnMenu()
     .DataSource(data => data
-        .Ajax() 
+        .Ajax()
         .Model(m => m.Id(adv => adv.Id))
         .Read(read => read.Action("Read", ControllerName))
         .Create(create => create.Action("Create", ControllerName))

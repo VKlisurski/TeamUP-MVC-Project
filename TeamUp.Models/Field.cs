@@ -3,23 +3,20 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using TeamUp.Models.Base;
 
-    public class Field : AuditInfo
+    public class Field
     {
         public Field()
         {
             this.Img = "Content\\Images\\Fields\\default.jpg";
         }
 
+        public int Id { get; set; }
+
         [Required]
         [MinLength(5)]
         [MaxLength(50)]
         public string Name { get; set; }
-
-        public int Id { get; set; }
-
-        public int GamesCount { get; set; }
 
         [Required]
         public string Phone { get; set; }
@@ -36,6 +33,8 @@
 
         [MaxLength(50)]
         public string MoreInfo { get; set; }
+
+        public int? GamesCount { get; set; }
 
         [Required]
         public virtual Address Address { get; set; }

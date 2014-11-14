@@ -5,9 +5,8 @@
     using System.Linq;
     using System.Linq.Expressions;
     using TeamUp.Data.Contracts;
-    using TeamUp.Models.Base;
 
-    public class GenericRepository<T> : IGenericRepository<T> where T : class, IAuditInfo
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly DbContext context;
         private readonly IDbSet<T> set;
@@ -20,7 +19,7 @@
 
         public IQueryable<T> All()
         {
-            return this.set.Where(x => x.DeletedOn == null);
+            return this.set;
         }
 
         public IQueryable<T> AllWithDeleted()
@@ -35,20 +34,17 @@
 
         public void Add(T entity)
         {
-            entity.CreatedOn = DateTime.Now;
             this.ChangeEntityState(entity, EntityState.Added);
         }
 
         public void Update(T entity)
         {
-            entity.ModifiedOn = DateTime.Now;
             this.ChangeEntityState(entity, EntityState.Modified);
         }
 
         public void Delete(T entity)
         {
-            entity.DeletedOn = DateTime.Now;
-            this.ChangeEntityState(entity, EntityState.Modified);
+            this.ChangeEntityState(entity, EntityState.Deleted);
         }
 
         public void Detach(T entity)

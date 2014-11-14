@@ -14,6 +14,8 @@
     using Kendo.Mvc.Extensions;
     using TeamUp.Models;
     using AutoMapper;
+    using System.Data.Entity.Validation;
+    using System.Text;
 
     public class UserController : AdminController
     {
@@ -62,7 +64,14 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                var user = this.Data.Users.Find(model.Id);
+                User user = this.Data.Users.Find(model.Id);
+                var votes = this.Data.Votes.All().Where(v => v.User.Id == user.Id).ToList();
+
+                foreach (Vote vote in votes)
+                {
+                    this.Data.Votes.Delete(vote);
+                }
+
                 this.Data.Users.Delete(user);
                 this.Data.SaveChanges();
             }

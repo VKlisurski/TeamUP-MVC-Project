@@ -3,9 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using TeamUp.Models.Base;
 
-    public class Game : AuditInfo
+    public class Game
     {
         private ICollection<User> appliedPlayers;
 
@@ -39,7 +38,6 @@
 
         public virtual User Creator { get; set; }
 
-        [Required]
         public virtual Field Field { get; set; }
 
         public virtual ICollection<User> AppliedPlayers

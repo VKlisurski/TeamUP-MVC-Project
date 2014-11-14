@@ -5,9 +5,8 @@
     using System.Web.Mvc;
     using TeamUp.Infrastructure.Mapping;
     using TeamUp.Models;
-    using TeamUp.Web.Areas.Administration.Models.Base;
 
-    public class UserAdminViewModel : AdministrationViewModel, IMapFrom<User>
+    public class UserAdminViewModel : IMapFrom<User>
     {
         [HiddenInput(DisplayValue = false)]
         public string Id { get; set; }

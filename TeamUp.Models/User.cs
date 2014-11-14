@@ -8,9 +8,8 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using TeamUp.Models.Base;
 
-    public class User : IdentityUser, IAuditInfo
+    public class User : IdentityUser
     {
         private ICollection<Game> games;
         private ICollection<Vote> votes;
@@ -30,33 +29,14 @@
             return userIdentity;
         }
 
+        public string StartDate { get; set; }
+
         public string ImgPath { get; set; }
 
         [Required]
         [MinLength(3)]
         [MaxLength(15)]
         public string TeamUpUsername { get; set; }
-
-        public System.DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public System.DateTime? ModifiedOn { get; set; }
-
-        [Index]
-        public System.DateTime? DeletedOn { get; set; }
-
-        public virtual ICollection<Game> Games
-        {
-            get
-            {
-                return this.games;
-            }
-            set
-            {
-                this.games = value;
-            }
-        }
 
         public virtual ICollection<Vote> Votes
         {

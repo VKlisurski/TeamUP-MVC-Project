@@ -8,7 +8,6 @@
     using System.Threading.Tasks;
     using TeamUp.Data.Contracts;
     using TeamUp.Models;
-    using TeamUp.Models.Base;
 
     using Microsoft.AspNet.Identity.EntityFramework;
 

@@ -6,7 +6,6 @@
     using TeamUp.Data.Contracts;
     using TeamUp.Data.Repositories;
     using TeamUp.Models;
-    using TeamUp.Models.Base;
 
     /// <summary>
     /// Unit of work
@@ -67,7 +66,7 @@
             this.context.SaveChanges();
         }
 
-        private IGenericRepository<T> GetRepository<T>() where T : class, IAuditInfo
+        private IGenericRepository<T> GetRepository<T>() where T : class
         {
             var typeOfModel = typeof(T);
 

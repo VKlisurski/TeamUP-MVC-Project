@@ -12,6 +12,7 @@
     using Microsoft.Owin.Security;
     using TeamUp.Web.Models;
     using TeamUp.Models;
+    using System.Web.Security;
 
     [Authorize]
     public class AccountController : Controller
@@ -162,6 +163,18 @@
                     PhoneNumber = model.PhoneNumber,
                     TeamUpUsername = model.TeamUpUsername
                 };
+
+                //if (!Roles.RoleExists("User"))
+                //{
+                //    Roles.CreateRole("User");
+                //}
+
+                //if (!Roles.RoleExists("Admin"))
+                //{
+                //    Roles.CreateRole("Admin");
+                //}
+
+                //Roles.AddUserToRole(user.UserName, "User");
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

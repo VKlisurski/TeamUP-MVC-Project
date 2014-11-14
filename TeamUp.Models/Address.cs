@@ -2,9 +2,8 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using TeamUp.Models.Base;
 
-    public class Address : AuditInfo
+    public class Address
     {
         public int Id { get; set; }
 

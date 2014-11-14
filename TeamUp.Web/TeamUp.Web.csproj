@@ -184,10 +184,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
+    <Compile Include="Areas\Administration\Controllers\FieldController.cs" />
     <Compile Include="Areas\Administration\Controllers\GameController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administration\Controllers\UserController.cs" />
-    <Compile Include="Areas\Administration\Models\Base\AdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\Models\FieldViewModel.cs" />
     <Compile Include="Areas\Administration\Models\GameViewModel.cs" />
     <Compile Include="Areas\Administration\Models\UserAdminViewModel.cs" />
@@ -444,6 +444,7 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\TimeSpan.cshtml" />
     <Content Include="Areas\Administration\Views\User\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Field\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

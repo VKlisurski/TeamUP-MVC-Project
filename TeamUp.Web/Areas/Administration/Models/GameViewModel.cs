@@ -8,23 +8,15 @@
     using System.Web.Mvc;
     using TeamUp.Infrastructure.Mapping;
     using TeamUp.Models;
-    using TeamUp.Web.Areas.Administration.Models.Base;
 
-    public class GameViewModel : AdministrationViewModel, IMapFrom<Game>, IHaveCustomMappings
+    public class GameViewModel : IMapFrom<Game>, IHaveCustomMappings
     {
         [HiddenInput(DisplayValue = false)]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
-        [DataType(DataType.DateTime)]
+        [Required]
         [Display(Name = "Начало")]
         public DateTime StartDate { get; set; }
-
-        [HiddenInput(DisplayValue = false)]
-        [Display(Name = "Създател")]
-        public string CreatorName { get; set; }
-
-        [Display(Name = "Игрище")]
-        public string FieldName { get; set; }
 
         [Required]
         [Display(Name = "Места")]
@@ -35,7 +27,7 @@
         public int MinPlayers { get; set; }
 
         [Required]
-        [Display(Name = "Макс. Играчи")]
+        [Display(Name = "Макс Играчи")]
         public int MaxPlayers { get; set; }
 
         [Required]
@@ -45,9 +37,17 @@
         [Required]
         [Display(Name = "Цена")]
         public decimal Price { get; set; }
+        
+        [HiddenInput(DisplayValue = false)]
+        public virtual Field Field { get; set; }
+
+
+        [HiddenInput(DisplayValue = false)]
+        [Display(Name = "Създател")]
+        public string CreatorName { get; set; }
 
         [Display(Name = "Игрище")]
-        public Field Field { get; set; }
+        public string FieldName { get; set; }
         
         public void CreateMappings(IConfiguration configuration)
         {

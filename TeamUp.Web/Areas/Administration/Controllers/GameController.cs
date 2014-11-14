@@ -19,6 +19,8 @@
     using System.Linq;
     using System;
     using Microsoft.AspNet.Identity;
+    using System.Data.Entity.Validation;
+    using System.Text;
 
     public class GameController : AdminController
     {
@@ -85,17 +87,39 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                Game game = this.Data.Games.Find(model.Id.Value);
+                var id = model.Id;
+                Game game = this.Data.Games.Find(id);
                 game.StartDate = model.StartDate;
                 game.AvailableSpots = model.AvailableSpots;
-                game.HasReservetion = model.HasReservetion;
                 game.MinPlayers = model.MinPlayers;
                 game.MaxPlayers = model.MaxPlayers;
+                game.HasReservetion = model.HasReservetion;
                 game.Price = model.Price;
 
                 this.Data.Games.Update(game);
+                try
+                {
+                    this.Data.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    var sb = new StringBuilder();
 
-                this.Data.SaveChanges();
+                    foreach (var failure in ex.EntityValidationErrors)
+                    {
+                        sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                        foreach (var error in failure.ValidationErrors)
+                        {
+                            sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                            sb.AppendLine();
+                        }
+                    }
+
+                    throw new DbEntityValidationException(
+                        "Entity Validation Failed - errors follow:\n" +
+                        sb.ToString(), ex
+                        ); // Add the original exception as the innerException
+                }
             }
 
             return Json(new[] { model }.ToDataSourceResult(request, ModelState));
@@ -106,7 +130,7 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                var game = this.Data.Games.Find(model.Id);
+                Game game = this.Data.Games.Find(model.Id);
                 this.Data.Games.Delete(game);
                 this.Data.SaveChanges();
             }
