@@ -439,12 +439,12 @@
     </Content>
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administration\Views\Home\Navigation.cshtml" />
     <Content Include="Areas\Administration\Views\Game\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\TimeSpan.cshtml" />
     <Content Include="Areas\Administration\Views\User\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Field\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -509,6 +509,7 @@
     <Content Include="Scripts\kendo\kendo.all.min.js.map" />
     <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Shared\EditorTemplates\DateTimePickerEditor.cshtml" />
+    <Content Include="Views\Shared\_AdminPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

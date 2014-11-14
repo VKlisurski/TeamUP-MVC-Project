@@ -5,7 +5,7 @@
     public class HomeController : Controller
     {
 
-        public ActionResult Navigation()
+        public ActionResult Index()
         {
             return View();
         }
