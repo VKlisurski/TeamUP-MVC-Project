@@ -7,7 +7,7 @@
 
 @(Html.Kendo()
     .Grid<TeamUp.Web.Areas.Administration.Models.GameViewModel>()
-    .Name("admingrid")
+    .Name("adminGridGames")
     .Columns(cols =>
         {
             cols.Bound(pr => pr.StartDate).Format("{0:dd.MM.yyyy HH:mm}").EditorTemplateName("DateTime").Width(30);

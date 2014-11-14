@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Мачове";
+    const string ControllerName = "User";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+    .Grid<TeamUp.Web.Areas.Administration.Models.UserAdminViewModel>()
+    .Name("adminGridUsers")
+    .Columns(cols =>
+        {
+            cols.Bound(pr => pr.CreatedOn).Format("{0:dd.MM.yyyy HH:mm}").EditorTemplateName("DateTime").Width(30);
+            cols.Bound(pr => pr.ImgPath).ClientTemplate("<img src='../../../#= ImgPath #' width='65'/>").Width(50);
+            cols.Bound(pr => pr.TeamUpUsername).Width(30);
+            cols.Bound(pr => pr.CreatedOn).Format("{0:dd.MM.yyyy}").EditorTemplateName("DateTime").Width(30).Hidden();
+            cols.Bound(pr => pr.ModifiedOn).Format("{0:dd.MM.yyyy}").EditorTemplateName("DateTime").Width(30).Hidden();
+            cols.Command(com => com.Edit()).Title("Промени").Width(30);
+            cols.Command(com => com.Destroy()).Title("Изтрий").Width(30);
+        })
+    .Sortable()
+    .Pageable(page => page.Refresh(true))
+    .Editable(edit =>
+        {
+            edit.Mode(GridEditMode.PopUp);
+        })
+    .ColumnMenu()
+    .DataSource(data => data
+        .Ajax()
+        .Model(m => m.Id(adv => adv.Id))
+        .Read(read => read.Action("Read", ControllerName))
+        .PageSize(4)
+        .Update(update => update.Action("Update", ControllerName))
+        .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+        ))
