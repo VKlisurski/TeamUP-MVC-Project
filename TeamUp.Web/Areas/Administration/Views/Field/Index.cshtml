@@ -13,8 +13,7 @@
             cols.Bound(pr => pr.Name);
             cols.Bound(pr => pr.Img).ClientTemplate("<img src='../../../#= Img #' width='100'/>").Width(50);
             cols.Bound(pr => pr.Phone);
-            //cols.Bound(pr => pr.Website).ClientTemplate("<a href='#= Website #'>Сайт</a>").Width(50);
-            cols.Bound(pr => pr.Website).ClientTemplate("#if(Website!=null) {# <a href='Website'>Сайт</a> #}#").Width(50);
+            cols.Bound(pr => pr.Website).ClientTemplate("<a href='#= Website #'>Сайт</a>").Width(50);
             cols.Bound(pr => pr.City);
             cols.Bound(pr => pr.Neighbourhood).Width(50);
             cols.Bound(pr => pr.Street).Width(60);

@@ -5,8 +5,8 @@
     <ul class="list-group">
         <li class="list-group-item">
             <div class="row">
-                <a href="#" class="btn btn-success">Кандидатствай</a>
-                <a href="#" class="btn btn-success">Информация</a>
+                @Html.ActionLink("Кандидатствай", "Apply", "Game", new { Model.Id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Информация", "Details", "Game", new { Model.Id }, new { @class = "btn btn-success" })
             </div>
         </li>
         <li class="list-group-item">

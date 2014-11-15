@@ -7,10 +7,13 @@
     public class Game
     {
         private ICollection<User> appliedPlayers;
+        private ICollection<User> approvedPlayers;
 
         public Game()
         {
             this.appliedPlayers = new HashSet<User>();
+
+            this.approvedPlayers = new HashSet<User>();
         }
 
         [Key]
@@ -39,6 +42,18 @@
         public virtual User Creator { get; set; }
 
         public virtual Field Field { get; set; }
+
+        public virtual ICollection<User> ApprovedPlayers
+        {
+            get
+            {
+                return this.approvedPlayers;
+            }
+            set
+            {
+                this.approvedPlayers = value;
+            }
+        }
 
         public virtual ICollection<User> AppliedPlayers
         {

@@ -1,0 +1,80 @@
+﻿@model TeamUp.Web.Models.GameDetailsViewModel
+@{
+    ViewBag.Title = "GameDetails";
+}
+
+<h2>Детайли за мач</h2>
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="col-md-4">
+            <h3>Игрище</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><b>Игрище:: </b> @Model.Field.Name</li>
+                <li class="list-group-item"><b>Телефон:: </b> @Model.Field.Phone</li>
+                <li class="list-group-item"><b>Отваря:: </b> @Model.Field.OpenningHour</li>
+                <li class="list-group-item"><b>Затваря:: </b> @Model.Field.ClosingHour</li>
+                @if (@Model.Field.Website != null)
+                {
+                    <li class="list-group-item"><b>Сайт: </b> @Model.Field.Website</li>
+                }
+                @if (@Model.Field.MoreInfo != null)
+                {
+                    <li class="list-group-item"><b>Затваря:: </b> @Model.Field.MoreInfo</li>
+                }
+                <li class="list-group-item">
+                    <div class="img-container">
+                        <img src="..\..\@Model.Field.Img" alt="FieldImage" width="100%" />
+                    </div>
+                </li>
+            </ul>
+            
+        </div>
+        <div class="col-md-4">
+            <h3>Мач</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><b>Места:: </b> @Model.AvailableSpots</li>
+                <li class="list-group-item"><b>Начало: </b>@Model.StartDate</li>
+                <li class="list-group-item"><b>Мин играчи: </b>@Model.MinPlayers</li>
+                <li class="list-group-item"><b>Макс играчи: </b>@Model.MaxPlayers</li>
+                <li class="list-group-item"><b>Кандидатствали: </b>@Model.AppliedPlayers.Count()</li>
+                <li class="list-group-item">
+                    @if (Model.HasReservetion)
+                    {
+                        <span>Да</span>
+                    }
+                    else
+                    {
+                        <span>Не</span>
+                    }
+                </li>
+                <li class="list-group-item">@Model.Creator.UserName</li>
+                <li class="list-group-item">@Model.Price</li>
+            </ul>
+            @if (@Model.AdditionalInfo != null)
+            {
+                <p>@Model.AdditionalInfo</p>
+            }
+
+            <p><a class="btn btn-success btn-lg">Кандидатствай</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Адрес</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><b>Град:: </b> @Model.Field.Address.City</li>
+                @if (@Model.Field.Address.Neighbourhood != null)
+                {
+                    <li class="list-group-item"><b>Сайт: </b> @Model.Field.Address.Neighbourhood</li>
+                }
+                <li class="list-group-item"><b>Улица: </b>@Model.Field.Address.Street</li>
+                @if (@Model.Field.Address.Number != null)
+                {
+                    <li class="list-group-item"><b>Сайт: </b> @Model.Field.Address.Number</li>
+                }
+                <li class="list-group-item"><b>Още информация: </b>@Model.Field.Address.MoreInfo</li>
+            </ul>
+        </div>
+    </div>
+</div>
