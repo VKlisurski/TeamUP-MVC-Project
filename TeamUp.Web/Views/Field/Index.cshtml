@@ -1,0 +1,32 @@
+﻿@model PagedList.IPagedList<TeamUp.Web.Models.FieldViewModel>
+
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Игрища";
+}
+
+<div class="control-buttons">
+    @Html.ActionLink("Създай", "Create", "Field", new { @class = "btn btn-success" })
+</div>
+
+<div class="control-buttons">
+    @Html.ActionLink("Име", "Index", new { sortingOrder = "Name" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Град", "Index", new { sortingOrder = "City" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Квартал", "Index", new { sortingOrder = "Neighbourhood" }, new { @class = "btn btn-default" })
+</div>
+
+@foreach (var field in Model)
+{
+    @Html.DisplayForModel("FieldViewModel.cshtml")
+}
+
+<br />
+<hr />
+<div class="paging-buttons">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

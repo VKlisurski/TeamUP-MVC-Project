@@ -29,7 +29,9 @@ textarea {
 }
   
 .top-players{
+    border-radius: 10px;
 }
+
     .top-players p{
             background-color: lightgreen;
             margin: 0;
@@ -70,4 +72,12 @@ textarea {
     color: white;
     vertical-align: middle;
     text-align:center;
+}
+
+.home-container h2{
+    background-color: lightgreen;
+    padding: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    color: white;
 }
