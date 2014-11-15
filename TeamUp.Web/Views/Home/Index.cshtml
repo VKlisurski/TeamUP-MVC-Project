@@ -2,8 +2,12 @@
     ViewBag.Title = "Home Page";
 }
 
+<div>
+    <h3>@TempData["Message"]</h3>
+</div>
+
 @{
-    Html.RenderAction("LoadLatestGames");
-    Html.RenderAction("LoadTopFields");
-    Html.RenderAction("LoadTopUsers");
+    Html.RenderAction("LoadLatestGames", "Home");
+    Html.RenderAction("LoadTopFields", "Home");
+    Html.RenderAction("LoadTopUsers", "Home");
 }

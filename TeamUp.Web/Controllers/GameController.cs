@@ -57,39 +57,42 @@
             return View(games.ToPagedList(pageNumber, itemsPerPage));
         }
 
-        [ChildActionOnly]
+
+        [Authorize]
         public ActionResult Apply(int id)
         {
-            if (User.Identity.IsAuthenticated)
+            var game = this.Data.Games.Find(id);
+            var user = this.Data.Users.Find(User.Identity.GetUserId());
+
+            if (game.AppliedPlayers.Contains(user) || game.ApprovedPlayers.Contains(user) || game.Creator.Id == user.Id)
             {
-                return View();
+                TempData["Message"] = "Вече ви има в списъците на мача";
+            }
+            else
+            {
+                TempData["Message"] = "Вие кандидатствахте успешно";
+                game.AppliedPlayers.Add(user);
+                this.Data.Games.Update(game);
+                this.Data.SaveChanges();
             }
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
+
+        [Authorize]
         public ActionResult Create()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return View();
-            }
-
             return View();
         }
 
         [Authorize]
         public ActionResult Details(int id)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                var game = this.Data.Games.Find(id);
-                GameDetailsViewModel gameDetails = Mapper.Map<GameDetailsViewModel>(game);
+            var game = this.Data.Games.Find(id);
+            GameDetailsViewModel gameDetails = Mapper.Map<GameDetailsViewModel>(game);
 
-                return View("~/Views/Game/GameDetails.cshtml", gameDetails);
-            }
-
-            return View();
+            return View("~/Views/Game/GameDetails.cshtml", gameDetails);
         }
     }
 }
