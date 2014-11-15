@@ -25,6 +25,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Начало", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Мачове", "Index", "Game")</li>
+                    <li>@Html.ActionLink("Игрища", "Index", "Field")</li>
                 </ul>
                 @if (User.IsInRole("Admin"))
                 {

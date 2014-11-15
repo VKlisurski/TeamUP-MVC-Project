@@ -10,7 +10,7 @@
     .Name("adminGridGames")
     .Columns(cols =>
         {
-            cols.Bound(pr => pr.StartDate).Format("{0:dd.MM.yyyy HH:mm}").EditorTemplateName("DateTimePicker").Width(30);
+            cols.Bound(pr => pr.StartDate).Format("{0:dd.MM.yyyy HH:mm}").EditorTemplateName("DateTime").Width(30);
             cols.Bound(pr => pr.AvailableSpots);
             cols.Bound(pr => pr.MinPlayers);
             cols.Bound(pr => pr.MaxPlayers);

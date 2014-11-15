@@ -23,7 +23,7 @@
             <b>Игрище:</b> @Model.Field.Name
         </li>
         <li class="list-group-item">
-            <b>Цена:</b> @string.Format("{0}", Model.Price.ToString("c", new System.Globalization.CultureInfo("bg")))
+            <b>Цена:</b> @Html.DisplayFor(g => g.Price, "Decimal")
         </li>
     </ul>
 </div>

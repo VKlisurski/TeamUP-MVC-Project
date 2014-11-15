@@ -1,0 +1,33 @@
+﻿@model PagedList.IPagedList<TeamUp.Web.Models.GameViewModel>
+
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet"  type="text/css"/>
+
+@{
+    ViewBag.Title = "Мачове";
+}
+
+<div class="control-buttons">
+    @Html.ActionLink("Създай", "Create", "Game", new { @class = "btn btn-success" })
+</div>
+
+<div class="control-buttons">
+    @Html.ActionLink("Дата", "Index", new { sortingOrder = "Date" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Свободни Места", "Index", new { sortingOrder = "Spots" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Цена", "Index", new { sortingOrder = "Price" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Игрище", "Index", new { sortingOrder = "Field" }, new { @class = "btn btn-default" })
+</div>
+
+@foreach (var game in Model)
+{
+    @Html.DisplayForModel("GameViewModel.cshtml")
+}
+
+<br />
+<hr />
+<div class="paging-buttons">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

@@ -5,7 +5,7 @@
     using TeamUp.Data.Contracts;
     using TeamUp.Web.Controllers;
 
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public abstract class AdminController : BaseController
     {
         public AdminController(ITeamUpData data)

@@ -54,3 +54,7 @@ textarea {
     .image {
         max-height: 10.5em;
     }
+
+.control-buttons{
+    margin: 1em;
+}

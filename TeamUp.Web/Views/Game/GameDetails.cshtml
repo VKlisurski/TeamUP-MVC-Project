@@ -1,27 +1,26 @@
 ﻿@model TeamUp.Web.Models.GameDetailsViewModel
 @{
-    ViewBag.Title = "GameDetails";
-}
+    ViewBag.Title = "Детайли Мач";
+} 
 
-<h2>Детайли за мач</h2>
-
+<div class="control-buttons"><a class="btn btn-success btn-lg">Кандидатствай</a></div>
 <div class="row">
 
     <div class="col-lg-12">
         <div class="col-md-4">
             <h3>Игрище</h3>
             <ul class="list-group">
-                <li class="list-group-item"><b>Игрище:: </b> @Model.Field.Name</li>
-                <li class="list-group-item"><b>Телефон:: </b> @Model.Field.Phone</li>
-                <li class="list-group-item"><b>Отваря:: </b> @Model.Field.OpenningHour</li>
-                <li class="list-group-item"><b>Затваря:: </b> @Model.Field.ClosingHour</li>
+                <li class="list-group-item"><b>Игрище: </b> @Model.Field.Name</li>
+                <li class="list-group-item"><b>Телефон: </b> @Model.Field.Phone</li>
+                <li class="list-group-item"><b>Отваря: </b> @Model.Field.OpenningHour</li>
+                <li class="list-group-item"><b>Затваря: </b> @Model.Field.ClosingHour</li>
                 @if (@Model.Field.Website != null)
                 {
-                    <li class="list-group-item"><b>Сайт: </b> @Model.Field.Website</li>
+                    <li class="list-group-item"><b>Сайт: </b> <a href="@Model.Field.Website" target="_blank">Клик</a></li>
                 }
                 @if (@Model.Field.MoreInfo != null)
                 {
-                    <li class="list-group-item"><b>Затваря:: </b> @Model.Field.MoreInfo</li>
+                    <li class="list-group-item"><b>Затваря: </b> @Model.Field.MoreInfo</li>
                 }
                 <li class="list-group-item">
                     <div class="img-container">
@@ -34,7 +33,7 @@
         <div class="col-md-4">
             <h3>Мач</h3>
             <ul class="list-group">
-                <li class="list-group-item"><b>Места:: </b> @Model.AvailableSpots</li>
+                <li class="list-group-item"><b>Места: </b> @Model.AvailableSpots</li>
                 <li class="list-group-item"><b>Начало: </b>@Html.DisplayFor(m => m.StartDate, "DateTime")</li>
                 <li class="list-group-item"><b>Мин играчи: </b>@Model.MinPlayers</li>
                 <li class="list-group-item"><b>Макс играчи: </b>@Model.MaxPlayers</li>
@@ -48,20 +47,18 @@
                     <li class="list-group-item"><b>Резервация: </b>Не</li>
                 }
                 <li class="list-group-item"><b>Потребител: </b>@Model.Creator.TeamUpUsername</li>
-                <li class="list-group-item"><b>Цена: </b>@Model.Price</li>
+                <li class="list-group-item"><b>Цена: </b>@Html.DisplayFor(g => g.Price, "Decimal")</li>
+                @if (@Model.AdditionalInfo != null)
+                {
+                    <li class="list-group-item"><b>Информация: </b><p>@Model.AdditionalInfo</p></li>
+                }
             </ul>
-            @if (@Model.AdditionalInfo != null)
-            {
-                <p>@Model.AdditionalInfo</p>
-            }
-
-            <p><a class="btn btn-success btn-lg">Кандидатствай</a></p>
         </div>
 
         <div class="col-md-4">
             <h3>Адрес</h3>
             <ul class="list-group">
-                <li class="list-group-item"><b>Град:: </b> @Model.Field.Address.City</li>
+                <li class="list-group-item"><b>Град: </b> @Model.Field.Address.City</li>
                 @if (@Model.Field.Address.Neighbourhood != null)
                 {
                     <li class="list-group-item"><b>Сайт: </b> @Model.Field.Address.Neighbourhood</li>
@@ -71,7 +68,10 @@
                 {
                     <li class="list-group-item"><b>Сайт: </b> @Model.Field.Address.Number</li>
                 }
-                <li class="list-group-item"><b>Още информация: </b>@Model.Field.Address.MoreInfo</li>
+                @if (@Model.Field.Address.MoreInfo != null)
+                {
+                    <li class="list-group-item"><b>Още информация: </b>@Model.Field.Address.MoreInfo</li>
+                }
             </ul>
         </div>
     </div>

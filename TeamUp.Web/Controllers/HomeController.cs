@@ -34,7 +34,7 @@
                 .Project()
                 .To<GameViewModel>();
 
-            return PartialView("~/Views/Games/_GamesHome.cshtml", games);
+            return PartialView("~/Views/Game/_GamesHome.cshtml", games);
         }
 
         [ChildActionOnly]
