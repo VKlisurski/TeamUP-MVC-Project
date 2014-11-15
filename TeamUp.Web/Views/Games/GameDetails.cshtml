@@ -35,22 +35,20 @@
             <h3>Мач</h3>
             <ul class="list-group">
                 <li class="list-group-item"><b>Места:: </b> @Model.AvailableSpots</li>
-                <li class="list-group-item"><b>Начало: </b>@Model.StartDate</li>
+                <li class="list-group-item"><b>Начало: </b>@Html.DisplayFor(m => m.StartDate, "DateTime")</li>
                 <li class="list-group-item"><b>Мин играчи: </b>@Model.MinPlayers</li>
                 <li class="list-group-item"><b>Макс играчи: </b>@Model.MaxPlayers</li>
                 <li class="list-group-item"><b>Кандидатствали: </b>@Model.AppliedPlayers.Count()</li>
-                <li class="list-group-item">
-                    @if (Model.HasReservetion)
-                    {
-                        <span>Да</span>
-                    }
-                    else
-                    {
-                        <span>Не</span>
-                    }
-                </li>
-                <li class="list-group-item">@Model.Creator.UserName</li>
-                <li class="list-group-item">@Model.Price</li>
+                @if (Model.HasReservetion)
+                {
+                    <li class="list-group-item"><b>Резервация: </b>Да</li>
+                }
+                else
+                {
+                    <li class="list-group-item"><b>Резервация: </b>Не</li>
+                }
+                <li class="list-group-item"><b>Потребител: </b>@Model.Creator.TeamUpUsername</li>
+                <li class="list-group-item"><b>Цена: </b>@Model.Price</li>
             </ul>
             @if (@Model.AdditionalInfo != null)
             {
