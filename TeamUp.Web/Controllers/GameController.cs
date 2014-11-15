@@ -27,7 +27,6 @@
         {
             ViewBag.CurrentSortOrder = sortingOrder;
 
-            int itemsPerPage = 2;
             int pageNumber = page ?? 1;
 
             IEnumerable<GameViewModel> games = this.Data.Games.All()
@@ -36,7 +35,7 @@
                .Project()
                .To<GameViewModel>();
 
-            var firstItemTodelete = games.FirstOrDefault();
+            int itemsPerPage = 2;
 
             switch (sortingOrder)
             {

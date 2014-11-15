@@ -30,12 +30,15 @@ textarea {
   
 .top-players{
 }
-    
     .top-players p{
             background-color: lightgreen;
             margin: 0;
             font-size: 1.5em;
             color: white;
+        }
+    
+    .top-players p{
+            
         }
 
     .top-players div{
@@ -57,4 +60,14 @@ textarea {
 
 .control-buttons{
     margin: 1em;
+}
+
+.box-title{
+    height: 3em;
+    background-color: lightgreen;
+    margin: 0;
+    font-size: 1.5em;
+    color: white;
+    vertical-align: middle;
+    text-align:center;
 }

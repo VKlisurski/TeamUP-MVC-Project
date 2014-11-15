@@ -1,6 +1,36 @@
 ﻿@model TeamUp.Web.Models.FieldViewModel
 
 <div class="col-md-3 text-center">
-    <h4>@Model.Name</h4>
-    <img src="@Model.Img" width="200"/>
+    <div class="box-title">
+        <p>@Model.Name</p>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <img class="image" src="@Model.Img" width="100%" />
+        </li>
+        <li class="list-group-item">
+            <b>Телефон:</b> @Model.Phone
+        </li>
+        @if (@Model.OpenningHour != null)
+        {
+            <li class="list-group-item">
+                <b>Отваря:</b> @Model.OpenningHour
+            </li>
+        }
+        @if (@Model.ClosingHour != null)
+        {
+            <li class="list-group-item">
+                <b>Затваря:</b> @Model.ClosingHour
+            </li>
+        }
+        <li class="list-group-item">
+            <b>Град:</b> @Model.Address.City
+        </li>
+        <li class="list-group-item">
+            <b>Улица:</b> @Model.Address.Street
+        </li>
+        <li class="list-group-item">
+            <a href="@Model.Website" target="_blank">Сайт</a>
+        </li>
+    </ul>
 </div>

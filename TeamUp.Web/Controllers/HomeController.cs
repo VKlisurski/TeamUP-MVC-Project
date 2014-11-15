@@ -48,7 +48,7 @@
                 .Project()
                 .To<FieldViewModel>();
 
-            return PartialView("~/Views/Fields/_FieldsHome.cshtml", fields);
+            return PartialView("~/Views/Field/_FieldsHome.cshtml", fields);
         }
 
         [ChildActionOnly]
