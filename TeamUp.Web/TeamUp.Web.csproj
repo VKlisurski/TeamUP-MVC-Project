@@ -208,6 +208,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Fields\FieldAddModel.cs" />
     <Compile Include="Models\FieldViewModel.cs" />
     <Compile Include="Models\GameDetailsViewModel.cs" />
     <Compile Include="Models\Games\GameAddViewModel.cs" />
@@ -451,7 +452,6 @@
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Game\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\TimeSpan.cshtml" />
     <Content Include="Areas\Administration\Views\User\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Field\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
@@ -546,13 +546,15 @@
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\HasReservation.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\FormMinMaxPlayers.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\FormStreetNumber.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\FormTimePicker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Admin\" />
+    <Folder Include="Areas\Administration\Views\Shared\EditorTemplates\" />
     <Folder Include="Content\Images\Avatars\" />
     <Folder Include="Content\Images\Fields\" />
-    <Folder Include="Models\Fields\" />
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>

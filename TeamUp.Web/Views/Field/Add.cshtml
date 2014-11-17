@@ -1,13 +1,33 @@
-﻿
+﻿@model TeamUp.Web.Models.Fields.FieldAddModel
 
-<div class="row">
-    <div class="col-md-3">
-        @Html.LabelFor(m => m)
-    </div>
-    <div class="col-md-3">
-        <input type="file" name="fieldImage" />
-    </div>
-    <div class="col-md-3">
-        @Html.ValidationMessageFor(m => m)
-    </div>
+@{
+    ViewBag.Title = "Създаване на игрище";
+}
+
+<div>
+    <h3>@TempData["Message"]</h3>
 </div>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Add", "Field", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.AntiForgeryToken();
+
+    @Html.EditorFor(m => m.Name)
+    @Html.EditorFor(m => m.Phone)
+    @Html.EditorFor(m => m.OpeningHourDate)
+    @Html.EditorFor(m => m.ClosingHourDate)
+    @Html.EditorFor(m => m.Website)
+    @Html.EditorFor(m => m.City)
+    @Html.EditorFor(m => m.Neighbourhood)
+    @Html.EditorFor(m => m.Street)
+    @Html.EditorFor(m => m.Number)
+    @Html.EditorFor(m => m.MoreInfo)
+
+    <input type="submit" class="btn btn-success" />
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

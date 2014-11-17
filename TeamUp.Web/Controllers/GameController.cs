@@ -59,6 +59,7 @@
         }
 
         [Authorize]
+        [HttpGet]
         public ActionResult Add()
         {
             var gameViewModel = new GameAddViewModel
@@ -124,7 +125,7 @@
 
             if (model.StartDate < DateTime.Now.AddMinutes(59) || model.StartDate > DateTime.Now.AddMonths(1))
             {
-                SetTempData("Невалидни начална дата на мача");
+                SetTempData("Невалидна начална дата на мача");
                 return false;
             }
 
@@ -142,7 +143,7 @@
 
             if (model.Price < 30 || model.Price > 100)
             {
-                SetTempData("Невалидни цена на игрището");
+                SetTempData("Невалидна цена на игрището");
                 return false;
             }
 

@@ -10,6 +10,7 @@
     using PagedList;
     using TeamUp.Data.Contracts;
     using TeamUp.Web.Models;
+    using TeamUp.Web.Models.Fields;
 
     public class FieldController : BaseController
     {
@@ -48,6 +49,54 @@
             }
 
             return View(fields.ToPagedList(pageNumber, itemsPerPage));
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Add()
+        {
+            var fieldFielModel = new FieldAddModel();
+
+            return View("~/Views/Field/Add.cshtml", fieldFielModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Add(FieldAddModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                //if (ValidateGameInput(model) == false)
+                //{
+                //    return RedirectToAction("Add", "Game");
+                //}
+
+                //var userId = User.Identity.GetUserId();
+                //var user = this.Data.Users.Find(userId);
+                //model.Creator = user;
+
+                //Field field = this.Data.Fields.Find(model.FieldId);
+                //model.Field = field;
+
+                //var dbModel = new Game();
+                //Mapper.CreateMap<GameAddViewModel, Game>();
+                //Mapper.Map(model, dbModel);
+
+                //this.Data.Games.Add(dbModel);
+                //this.Data.SaveChanges();
+
+                //SetTempData("Успешно добавихте мач");
+                //return RedirectToAction("Index", "Home");
+            }
+
+            SetTempData("Невалиден мач");
+            return View(model);
+        }
+
+        private void SetTempData(string message)
+        {
+            TempData["Meesage"] = message;
         }
     }
 }
