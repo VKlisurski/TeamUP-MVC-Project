@@ -37,10 +37,11 @@
         [Required]
         [Display(Name = "Цена")]
         public decimal Price { get; set; }
-        
-        [HiddenInput(DisplayValue = false)]
-        public virtual Field Field { get; set; }
 
+        [UIHint("GridForeignKey")]
+        public int FieldId { get; set; }
+        
+        public virtual Field Field { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         [Display(Name = "Създател")]

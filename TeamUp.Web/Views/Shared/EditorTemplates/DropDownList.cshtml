@@ -1,0 +1,13 @@
+﻿@model int?
+
+<div class="row">
+    <div class="col-md-3">
+        @Html.LabelFor(g => g)
+    </div>
+    <div class="col-md-3">
+        @Html.DropDownListFor(g => g, (IEnumerable<SelectListItem>)ViewBag.ListItem, new { @class = "form-control" })
+    </div>
+    <div class="col-md-3">
+        @Html.ValidationMessageFor(g => g)
+    </div>
+</div>

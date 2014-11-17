@@ -1,0 +1,13 @@
+﻿@model int?
+
+<div class="row">
+    <div class="col-md-3">
+        @Html.LabelFor(g => g)
+    </div>
+    <div class="col-md-3">
+        @Html.Kendo().NumericTextBoxFor(m => m).Min(8).Max(12).Value(8)
+    </div>
+    <div class="col-md-3">
+        @Html.ValidationMessageFor(g => g)
+    </div>
+</div>

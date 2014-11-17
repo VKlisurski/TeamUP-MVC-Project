@@ -1,6 +1,7 @@
 ﻿namespace TeamUp.Web.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
     using TeamUp.Infrastructure.Mapping;
@@ -26,7 +27,9 @@
         [Range(20, 200)]
         public decimal Price { get; set; }
 
+        public int FieldId { get; set; }
+
         [Required]
-        public virtual Field Field { get; set; }
+        public Field Field { get; set; }
     }
 }

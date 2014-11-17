@@ -1,0 +1,31 @@
+﻿@model TeamUp.Web.Models.Games.GameAddViewModel
+
+@{
+    ViewBag.Title = "Публикуване на мач";
+}
+
+<div>
+    <h3>@TempData["Message"]</h3>
+</div>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Add", "Game", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.AntiForgeryToken();
+    
+    @Html.EditorFor(m => m.FieldId, new { ListItem = Model.Fields})
+    @Html.EditorFor(m => m.StartDate)
+    @Html.EditorFor(m => m.AvailableSpots)
+    @Html.EditorFor(m => m.MinPlayers)
+    @Html.EditorFor(m => m.MaxPlayers)
+    @Html.EditorFor(m => m.AdditionalInfo)
+    @Html.EditorFor(m => m.Price)
+    @Html.EditorFor(m => m.HasReservetion)
+
+    <input type="submit" class="btn btn-success" />
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

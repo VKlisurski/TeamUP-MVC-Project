@@ -13,6 +13,8 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using PagedList;
+    using TeamUp.Web.Models.Games;
+    using System.Data.Entity.Infrastructure;
 
 
     public class GameController : BaseController
@@ -56,6 +58,96 @@
             return View(games.ToPagedList(pageNumber, itemsPerPage));
         }
 
+        [Authorize]
+        public ActionResult Add()
+        {
+            var gameViewModel = new GameAddViewModel
+            {
+                Fields = this.Data.Fields
+                .All()
+                .Select(f => new SelectListItem
+                {
+                    Value = f.Id.ToString(),
+                    Text = f.Name
+                })
+            };
+
+            return View("~/Views/Game/Add.cshtml", gameViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Add(GameAddViewModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                if (ValidateGameInput(model) == false)
+                {
+                    return RedirectToAction("Add", "Game");
+                } 
+
+                var userId = User.Identity.GetUserId();
+                var user = this.Data.Users.Find(userId);
+                model.Creator = user;
+
+                Field field = this.Data.Fields.Find(model.FieldId);
+                model.Field = field;
+
+                var dbModel = new Game();
+                Mapper.CreateMap<GameAddViewModel, Game>();
+                Mapper.Map(model, dbModel);
+
+                this.Data.Games.Add(dbModel);
+                this.Data.SaveChanges();
+
+                SetTempData("Успешно добавихте мач");
+                return RedirectToAction("Index", "Home");
+            }
+
+            SetTempData("Невалиден мач");
+            return View(model);
+        }
+
+        private void SetTempData(string message)
+        {
+            TempData["Message"] = message;
+        }
+
+        private bool ValidateGameInput(GameAddViewModel model)
+        {
+            if (model.AvailableSpots < 1 || model.AvailableSpots > 11)
+            {
+                SetTempData("Невалидни свободни места");
+                return false;
+            }
+
+            if (model.StartDate < DateTime.Now.AddMinutes(59) || model.StartDate > DateTime.Now.AddMonths(1))
+            {
+                SetTempData("Невалидни начална дата на мача");
+                return false;
+            }
+
+            if (model.MinPlayers < 8 || model.AvailableSpots > 12)
+            {
+                SetTempData("Невалидни минимален брой играчи");
+                return false;
+            }
+
+            if (model.MaxPlayers < 8 || model.MaxPlayers > 12)
+            {
+                SetTempData("Невалидни максимален брой играчи");
+                return false;
+            }
+
+            if (model.Price < 30 || model.Price > 100)
+            {
+                SetTempData("Невалидни цена на игрището");
+                return false;
+            }
+
+            return true;
+        }
 
         [Authorize]
         public ActionResult Apply(int id)
@@ -76,13 +168,6 @@
             }
 
             return RedirectToAction("Index", "Home");
-        }
-
-
-        [Authorize]
-        public ActionResult Create()
-        {
-            return View();
         }
 
         [Authorize]

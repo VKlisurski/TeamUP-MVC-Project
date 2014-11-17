@@ -34,6 +34,7 @@
         [Required]
         public bool HasReservetion { get; set; }
 
+        [StringLength(500)]
         public string AdditionalInfo { get; set; }
 
         [Required]

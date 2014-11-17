@@ -18,6 +18,7 @@
             cols.Bound(pr => pr.CreatorName);
             cols.Bound(pr => pr.FieldName);
             cols.Bound(pr => pr.Price);
+            cols.ForeignKey(pr => pr.FieldId, (System.Collections.IEnumerable)ViewBag.Fields, "Id", "Name").Hidden();
             cols.Command(com => com.Edit()).Title("Промени");
             cols.Command(com => com.Destroy()).Title("Изтрий");
         })
