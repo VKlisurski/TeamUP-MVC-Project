@@ -11,9 +11,12 @@
     .Columns(cols =>
         {
             cols.Bound(pr => pr.Name);
-            cols.Bound(pr => pr.Img).ClientTemplate("<img src='" + @Url.Action("Image", "Field", new {id = "#= Img.Id #"}) +"' alt='@Model.Name' class='img-responsive' />").Width(150);
+            cols.Bound(pr => pr.Img)
+                .ClientTemplate("<img src='" + @Url.Action("Image", "Field", new {id = "#= Img.Id #"}) +"' alt='@Model.Name' class='img-responsive' />")
+                .Width(150)
+                .EditorTemplateName("FormImage");
             cols.Bound(pr => pr.Phone);
-            cols.Bound(pr => pr.Website).ClientTemplate("<a href='#= Website #'>Сайт</a>").Width(50);
+            cols.Bound(pr => pr.Website).ClientTemplate("<a href='#= Website #' target='_blank'>Сайт</a>").Width(50);
             cols.Bound(pr => pr.City);
             cols.Bound(pr => pr.Neighbourhood).Width(50);
             cols.Bound(pr => pr.Street).Width(60);

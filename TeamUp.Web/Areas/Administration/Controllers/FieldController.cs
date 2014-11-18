@@ -84,8 +84,10 @@
             {
                 int id = model.Id;
                 Field dbModel = this.Data.Fields.Find(id);
+                var img = dbModel.Img;
                 Mapper.CreateMap<FieldViewModel, Field>();
-                Field map = Mapper.Map(model, dbModel);
+                Mapper.Map(model, dbModel);
+                dbModel.Img = img;
 
                 this.Data.Fields.Update(dbModel);
                 this.Data.SaveChanges();

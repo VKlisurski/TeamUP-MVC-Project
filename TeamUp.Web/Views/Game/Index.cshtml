@@ -19,10 +19,7 @@
     @Html.ActionLink("Игрище", "Index", new { sortingOrder = "Field" }, new { @class = "btn btn-default" })
 </div>
 
-@foreach (var game in Model)
-{
-    @Html.DisplayForModel("GameViewModel.cshtml")
-}
+@Html.DisplayForModel("GameViewModel.cshtml")
 
 <br />
 <hr />

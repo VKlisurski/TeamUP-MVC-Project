@@ -37,7 +37,7 @@
                .Project()
                .To<GameViewModel>();
 
-            int itemsPerPage = 2;
+            int itemsPerPage = 4;
 
             switch (sortingOrder)
             {

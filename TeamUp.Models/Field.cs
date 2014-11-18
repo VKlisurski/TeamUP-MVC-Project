@@ -15,7 +15,7 @@
         [StringLength(50), MinLength(5)]
         public string Name { get; set; }
 
-        [StringLength(15), MinLength(10)]
+        [StringLength(15), MinLength(7)]
         public string Phone { get; set; }
 
         [StringLength(200)]

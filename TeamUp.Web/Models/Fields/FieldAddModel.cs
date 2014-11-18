@@ -16,7 +16,7 @@ namespace TeamUp.Web.Models.Fields
         [Display(Name = "Име")]
         public string Name { get; set; }
 
-        [StringLength(15), MinLength(10)]
+        [StringLength(15), MinLength(7)]
         [UIHint("SingleLineText")]
         [Display(Name = "Телефон")]
         public string Phone { get; set; }
@@ -62,7 +62,7 @@ namespace TeamUp.Web.Models.Fields
 
         [UIHint("FormStreetNumber")]
         [Display(Name = "Номер")]
-        public int Number { get; set; }
+        public int? Number { get; set; }
 
         public Address Address { get; set; }
 

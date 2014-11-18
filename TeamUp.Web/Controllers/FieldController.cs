@@ -27,13 +27,12 @@
         {
             ViewBag.CurrentSortOrder = sortingOrder;
             int pageNumber = page ?? 1;
+            int itemsPerPage = 4;
 
             IEnumerable<FieldViewModel> fields = this.Data.Fields.All()
                .AsQueryable()
                .Project()
                .To<FieldViewModel>();
-
-            int itemsPerPage = 2;
 
             switch (sortingOrder)
             {
@@ -70,10 +69,10 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                //if (ValidateGameInput(model) == false)
-                //{
-                //    return RedirectToAction("Add", "Game");
-                //}
+                if (ValidateGameInput(model) == false)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
 
                 var addres = this.Data.Addresses.All().Where(a => a.Street == model.Street).FirstOrDefault();
                 if (addres == null)
@@ -131,7 +130,35 @@
             }
 
             SetTempData("Невалидно игрище");
-            return View(model);
+            return RedirectToAction("Index", "Home");
+        }
+
+        private bool ValidateGameInput(FieldAddModel model)
+        {
+            if (model.Phone.Length < 7 || model.Phone.Length > 15)
+            {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(model.Street) || model.Street.Length < 3 || model.Street.Length > 30)
+            {
+                SetTempData("Невалиднa улица");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(model.City) || model.City.Length < 4 || model.Street.Length > 30)
+            {
+                SetTempData("Невалиден град");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(model.Name) || model.Name.Length < 4 || model.Name.Length > 30)
+            {
+                SetTempData("Невалидно име на игрище");
+                return false;
+            }
+
+            return true;
         }
 
         private void SetTempData(string message)

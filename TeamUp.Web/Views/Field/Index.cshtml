@@ -18,10 +18,9 @@
     @Html.ActionLink("Квартал", "Index", new { sortingOrder = "Neighbourhood" }, new { @class = "btn btn-default" })
 </div>
 
-@foreach (var field in Model)
-{
+
     @Html.DisplayForModel("FieldViewModel.cshtml")
-}
+
 
 <br />
 <hr />
