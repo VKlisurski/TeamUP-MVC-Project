@@ -1,9 +1,9 @@
-﻿using Microsoft.Owin.BuilderProperties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using TeamUp.Models;
 
 namespace TeamUp.Web.Models.Fields
 {
@@ -25,9 +25,6 @@ namespace TeamUp.Web.Models.Fields
         [UIHint("SingleLineText")]
         [Display(Name = "Сайт")]
         public string Website { get; set; }
-
-        [StringLength(200)]
-        public string Img { get; set; }
 
         public TimeSpan? OpenningHour { get; set; }
 
@@ -68,5 +65,9 @@ namespace TeamUp.Web.Models.Fields
         public int Number { get; set; }
 
         public Address Address { get; set; }
+
+        [UIHint("FormImage")]
+        [Display(Name = "Снимка на игрището")]
+        public HttpPostedFileBase UploadedImage { get; set; }
     }
 }

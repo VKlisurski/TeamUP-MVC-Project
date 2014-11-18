@@ -11,6 +11,9 @@
     using TeamUp.Data.Contracts;
     using TeamUp.Web.Models;
     using TeamUp.Web.Models.Fields;
+    using TeamUp.Models;
+    using System.IO;
+    using System.Data.Entity.Validation;
 
     public class FieldController : BaseController
     {
@@ -72,31 +75,80 @@
                 //    return RedirectToAction("Add", "Game");
                 //}
 
-                //var userId = User.Identity.GetUserId();
-                //var user = this.Data.Users.Find(userId);
-                //model.Creator = user;
+                var addres = this.Data.Addresses.All().Where(a => a.Street == model.Street).FirstOrDefault();
+                if (addres == null)
+                {
+                    addres = new Address
+                    {
+                        City = model.City,
+                        Neighbourhood = model.Neighbourhood,
+                        Street = model.Street,
+                        Number = model.Number
+                    };
+                    this.Data.Addresses.Add(addres);
+                    this.Data.SaveChanges();
+                }
 
-                //Field field = this.Data.Fields.Find(model.FieldId);
-                //model.Field = field;
+                model.Address = addres;
 
-                //var dbModel = new Game();
-                //Mapper.CreateMap<GameAddViewModel, Game>();
-                //Mapper.Map(model, dbModel);
+                var dbModel = new Field();
+                Mapper.CreateMap<FieldAddModel, Field>();
+                Mapper.Map(model, dbModel);
 
-                //this.Data.Games.Add(dbModel);
-                //this.Data.SaveChanges();
+                if (model.UploadedImage != null)
+                {
+                    using (var memory = new MemoryStream())
+                    {
+                        model.UploadedImage.InputStream.CopyTo(memory);
+                        var content = memory.GetBuffer();
 
-                //SetTempData("Успешно добавихте мач");
-                //return RedirectToAction("Index", "Home");
+                        var newImg = new Img
+                        {
+                            Content = content,
+                            FileExtension = model.UploadedImage.FileName.Split(new[] { '.' }).Last()
+                        };
+
+                        this.Data.Images.Add(newImg);
+                        this.Data.SaveChanges();
+
+                        dbModel.Img = newImg;
+                    }
+                }
+                else
+                {
+                    var img = this.Data.Images.Find(1);
+                    if (img != null)
+                    {
+                        dbModel.Img = img;
+                    }
+                }
+
+                this.Data.Fields.Add(dbModel);
+                this.Data.SaveChanges();
+
+                SetTempData("Успешно добавихте игрище");
+                return RedirectToAction("Index", "Home");
             }
 
-            SetTempData("Невалиден мач");
+            SetTempData("Невалидно игрище");
             return View(model);
         }
 
         private void SetTempData(string message)
         {
-            TempData["Meesage"] = message;
+            TempData["Message"] = message;
+        }
+
+        public ActionResult Image(int id)
+        {
+            var image = this.Data.Images.Find(id);
+
+            if (image == null)
+            {
+                throw new HttpException(404, "Image not found");
+            }
+
+            return File(image.Content, "image/" + image.FileExtension);
         }
     }
 }

@@ -26,7 +26,7 @@
                 }
                 <li class="list-group-item">
                     <div class="img-container">
-                        <img src="..\..\@Model.Field.Img" alt="FieldImage" width="100%" />
+                        <img src="@Url.Action("Image", "Field", new { id = @Model.Field.Img.Id })" alt="@Model.Field.Name" class="img-responsive" />
                     </div>
                 </li>
             </ul>

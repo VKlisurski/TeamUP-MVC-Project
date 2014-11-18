@@ -28,8 +28,7 @@
         [MaxLength(200)]
         public string Website { get; set; }
 
-        [MaxLength(200)]
-        public string Img { get; set; }
+        public Img Img { get; set; }
 
         public TimeSpan? OpenningHour { get; set; }
 

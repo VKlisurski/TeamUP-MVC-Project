@@ -61,6 +61,14 @@
             }
         }
 
+        public IGenericRepository<Img> Images
+        {
+            get
+            {
+                return this.GetRepository<Img>();
+            }
+        }
+
         public void SaveChanges()
         {
             this.context.SaveChanges();

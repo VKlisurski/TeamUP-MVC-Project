@@ -5,9 +5,12 @@
         <p>@Model.Name</p>
     </div>
     <ul class="list-group">
-        <li class="list-group-item">
-            <img class="image" src="@Model.Img" width="100%" />
-        </li>
+        @if (Model.Img.Id != null)
+        {
+            <li class="list-group-item">
+                <img src="@Url.Action("Image", "Field", new {id = Model.Img.Id})" alt="@Model.Name" class="img-responsive" />
+            </li>
+        }
         <li class="list-group-item">
             <b>Телефон:</b> @Model.Phone
         </li>

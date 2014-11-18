@@ -9,11 +9,6 @@
 
     public class FieldViewModel : IMapFrom<Field>, IHaveCustomMappings
     {
-        public FieldViewModel()
-        {
-            this.Img = "Content\\Images\\Fields\\default.jpg";
-        }
-
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
@@ -31,10 +26,6 @@
         [Display(Name = "Сайт")]
         public string Website { get; set; }
 
-        [MaxLength(200)]
-        [Display(Name = "Снимка")]
-        public string Img { get; set; }
-
         [HiddenInput(DisplayValue = false)]
         public TimeSpan? OpenningHour { get; set; }
 
@@ -48,6 +39,8 @@
 
         [HiddenInput(DisplayValue = false)]
         public Address Address { get; set; }
+
+        public Img Img { get; set; }
 
 
         [Required]

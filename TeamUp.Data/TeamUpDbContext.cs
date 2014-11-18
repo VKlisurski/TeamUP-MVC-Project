@@ -32,5 +32,7 @@
 
         public IDbSet<Vote> Votes { get; set; }
 
+        public IDbSet<Img> Imgs { get; set; }
+
     }
 }

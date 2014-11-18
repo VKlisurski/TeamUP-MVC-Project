@@ -11,7 +11,7 @@
     .Columns(cols =>
         {
             cols.Bound(pr => pr.Name);
-            cols.Bound(pr => pr.Img).ClientTemplate("<img src='../../../#= Img #' width='100'/>").Width(50);
+            cols.Bound(pr => pr.Img).ClientTemplate("<img src='" + @Url.Action("Image", "Field", new {id = "#= Img.Id #"}) +"' alt='@Model.Name' class='img-responsive' />").Width(150);
             cols.Bound(pr => pr.Phone);
             cols.Bound(pr => pr.Website).ClientTemplate("<a href='#= Website #'>Сайт</a>").Width(50);
             cols.Bound(pr => pr.City);

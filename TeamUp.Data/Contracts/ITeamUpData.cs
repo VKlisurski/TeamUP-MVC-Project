@@ -13,6 +13,8 @@
         IGenericRepository<User> Users { get; }
 
         IGenericRepository<Vote> Votes { get; }
+        
+        IGenericRepository<Img> Images { get; }
 
         void SaveChanges();
     }

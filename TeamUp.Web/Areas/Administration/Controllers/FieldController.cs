@@ -64,10 +64,10 @@
                 Mapper.CreateMap<FieldViewModel, Field>();
                 Mapper.Map(model, dbModel);
 
-                if (dbModel.Img == null)
-                {
-                    dbModel.Img = "Content\\Images\\Fields\\default.jpg";
-                }
+                //if (dbModel.Img == null)
+                //{
+                //    dbModel.Img = "Content\\Images\\Fields\\default.jpg";
+                //}
 
                 this.Data.Fields.Add(dbModel);
                 this.Data.SaveChanges();
@@ -105,6 +105,18 @@
             }
 
             return Json(new[] { model }.ToDataSourceResult(request, ModelState));
+        }
+
+        public ActionResult Image(int id)
+        {
+            var image = this.Data.Images.Find(id);
+
+            if (image == null)
+            {
+                throw new HttpException(404, "Image not found");
+            }
+
+            return File(image.Content, "image/" + image.FileExtension);
         }
     }
 }

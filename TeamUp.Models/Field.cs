@@ -8,7 +8,6 @@
     {
         public Field()
         {
-            this.Img = "Content\\Images\\Fields\\default.jpg";
         }
 
         public int Id { get; set; }
@@ -22,8 +21,7 @@
         [StringLength(200)]
         public string Website { get; set; }
 
-        [StringLength(200)]
-        public string Img { get; set; }
+        public virtual Img Img { get; set; }
 
         public TimeSpan? OpenningHour { get; set; }
 
