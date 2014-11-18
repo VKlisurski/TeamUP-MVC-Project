@@ -44,6 +44,7 @@
         [StringLength(500)]
         [UIHint("MultiLineText")]
         [Display(Name = "Допълнителна информация")]
+        [AllowHtml]
         public string AdditionalInfo { get; set; }
 
         [Required]
