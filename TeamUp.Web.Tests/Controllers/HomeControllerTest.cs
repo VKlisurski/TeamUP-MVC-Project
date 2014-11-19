@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TeamUp.Web;
-using TeamUp.Web.Controllers;
-
-namespace TeamUp.Web.Tests.Controllers
+﻿namespace TeamUp.Web.Tests.Controllers
 {
+    using System;
+    using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class HomeControllerTest
     {

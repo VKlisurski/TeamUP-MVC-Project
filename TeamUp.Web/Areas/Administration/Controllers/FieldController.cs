@@ -1,33 +1,28 @@
 ﻿namespace TeamUp.Web.Areas.Administration.Controllers
 {
-    using Kendo.Mvc.UI;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
-    using TeamUp.Web.Areas.Administration.Controllers.Base;
-    using AutoMapper.QueryableExtensions;
-    using TeamUp.Web.Areas.Administration.Models;
-    using TeamUp.Data.Contracts;
-    using Kendo.Mvc.UI;
-    using Kendo.Mvc.Extensions;
-    using TeamUp.Models;
     using AutoMapper;
-    using System.Data.Entity.Validation;
-    using System.Text;
+    using AutoMapper.QueryableExtensions;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+    using TeamUp.Data.Contracts;
+    using TeamUp.Models;
+    using TeamUp.Web.Areas.Administration.Controllers.Base;
+    using TeamUp.Web.Areas.Administration.Models;
 
     public class FieldController : AdminController
     {
         public FieldController(ITeamUpData data)
             : base(data)
         {
-
         }
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -41,40 +36,6 @@
                 .ToDataSourceResult(request);
 
             return this.Json(fields);
-        }
-
-        [HttpPost]
-        public ActionResult Create([DataSourceRequest]DataSourceRequest request, FieldViewModel model)
-        {
-            if (model != null && ModelState.IsValid)
-            {
-                Address address = new Address()
-                {
-                    City = model.City,
-                    Neighbourhood = model.Neighbourhood,
-                    Street = model.Street,
-                    Number = model.StreetNumber,
-                    MoreInfo = model.MoreInfo
-                };
-
-                this.Data.Addresses.Add(address);
-
-                model.Address = address;
-                Field dbModel = new Field();
-                Mapper.CreateMap<FieldViewModel, Field>();
-                Mapper.Map(model, dbModel);
-
-                //if (dbModel.Img == null)
-                //{
-                //    dbModel.Img = "Content\\Images\\Fields\\default.jpg";
-                //}
-
-                this.Data.Fields.Add(dbModel);
-                this.Data.SaveChanges();
-                model.Id = dbModel.Id;
-            }
-
-            return Json(new[] { model }.ToDataSourceResult(request, ModelState));
         }
 
         [HttpPost]

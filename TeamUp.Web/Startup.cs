@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(TeamUp.Web.Startup))]
+
 namespace TeamUp.Web
 {
     public partial class Startup

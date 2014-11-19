@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace TeamUp.Web.Areas.Administration
+﻿namespace TeamUp.Web.Areas.Administration
 {
+    using System.Web.Mvc;
+
     public class AdministrationAreaRegistration : AreaRegistration 
     {
         public override string AreaName 

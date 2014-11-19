@@ -1,11 +1,9 @@
 ﻿namespace TeamUp.Web.Areas.Administration.Models
 {
-    using AutoMapper;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Globalization;
     using System.Web.Mvc;
+    using AutoMapper;
     using TeamUp.Infrastructure.Mapping;
     using TeamUp.Models;
 
@@ -18,15 +16,16 @@
         [Display(Name = "Начало")]
         public DateTime StartDate { get; set; }
 
-        [Required]
+        [Range(1, 11)]
         [Display(Name = "Места")]
         public int AvailableSpots { get; set; }
 
-        [Required]
         [Display(Name = "Мин. Играчи")]
+        [Range(8, 12)]
         public int MinPlayers { get; set; }
 
         [Required]
+        [Range(8, 12)]
         [Display(Name = "Макс Играчи")]
         public int MaxPlayers { get; set; }
 
@@ -34,13 +33,15 @@
         [Display(Name = "Резервация")]
         public bool HasReservetion { get; set; }
 
-        [Required]
+        [Range(30, 100)]
         [Display(Name = "Цена")]
         public decimal Price { get; set; }
 
+        [Range(1, int.MaxValue)]
         [UIHint("GridForeignKey")]
         public int FieldId { get; set; }
-        
+
+        [Display(Name = "Игрище")]
         public virtual Field Field { get; set; }
 
         [HiddenInput(DisplayValue = false)]
@@ -48,6 +49,7 @@
         public string CreatorName { get; set; }
 
         [Display(Name = "Игрище")]
+        [HiddenInput(DisplayValue = false)]
         public string FieldName { get; set; }
         
         public void CreateMappings(IConfiguration configuration)

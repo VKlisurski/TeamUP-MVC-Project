@@ -57,7 +57,6 @@
         [Display(Name = "Игрище")]
         public int FieldId { get; set; }
 
-
         public User Creator { get; set; }
 
         public Field Field { get; set; }

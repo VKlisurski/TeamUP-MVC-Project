@@ -1,34 +1,26 @@
 ﻿namespace TeamUp.Web.Areas.Administration.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
     using TeamUp.Data.Contracts;
+    using TeamUp.Models;
     using TeamUp.Web.Areas.Administration.Controllers.Base;
     using TeamUp.Web.Areas.Administration.Models;
-    using AutoMapper.QueryableExtensions;
-
-    using Kendo.Mvc.UI;
-    using Kendo.Mvc.Extensions;
-    using TeamUp.Models;
-    using AutoMapper;
-    using System.Data.Entity.Validation;
-    using System.Text;
 
     public class UserController : AdminController
     {
-
         public UserController(ITeamUpData data)
             : base(data)
         {
-
         }
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]

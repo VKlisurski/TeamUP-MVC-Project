@@ -1,21 +1,19 @@
 ﻿namespace TeamUp.Web.Controllers
 {
     using System.IO;
-    using System.Web.Mvc;
-    using TeamUp.Data.Contracts;
-    using Microsoft.AspNet.Identity;
     using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using TeamUp.Data.Contracts;
 
     public class FileController : BaseController
     {
         public FileController(ITeamUpData data)
             : base(data)
         {
-            
         }
 
         [HttpPost]
-        [ChildActionOnly]
         [ValidateAntiForgeryToken]
         public ActionResult AvatarUpload(HttpPostedFileBase avatar)
         {
@@ -23,14 +21,14 @@
 
             if (avatarPic == null) // Same for file2, file3, file4
             {
-                return View();
+                return this.View();
             }
 
             string extension = Path.GetExtension(avatarPic.FileName);
 
             if (extension != ".jpg" && extension != ".png")
             {
-                return View();
+                return this.View();
             }
 
             if (avatarPic.ContentLength > 0)
@@ -48,7 +46,7 @@
                 avatarPic.SaveAs(filePath);
             }
 
-            return RedirectToAction("Index", "Home");
+            return this.RedirectToAction("Index", "Home");
         }
     }
 }

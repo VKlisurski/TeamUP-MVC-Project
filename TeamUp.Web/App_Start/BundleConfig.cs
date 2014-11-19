@@ -1,6 +1,5 @@
 ﻿namespace TeamUp.Web
 {
-    using System.Web;
     using System.Web.Optimization;
 
     public class BundleConfig
@@ -33,14 +32,12 @@
 
         private static void RegisterScriptBundles(BundleCollection bundles)
         {
-
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/kendo.all.min.js",
                 "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                 .Include("~/Scripts/kendo/jquery.min.js"));
-                //.Include("~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

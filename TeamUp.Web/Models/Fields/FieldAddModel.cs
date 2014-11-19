@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using TeamUp.Models;
-
-namespace TeamUp.Web.Models.Fields
+﻿namespace TeamUp.Web.Models.Fields
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using TeamUp.Models;
+
     public class FieldAddModel
     {
         public int Id { get; set; }

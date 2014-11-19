@@ -4,20 +4,17 @@
 namespace TeamUp.Web.App_Start
 {
     using System;
+    using System.Data.Entity;
     using System.Web;
-
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
     using Ninject.Web.Common;
-    using System.Data.Entity;
     using TeamUp.Data;
     using TeamUp.Data.Contracts;
-    using TeamUp.Data.Repositories;
 
     public static class NinjectWebCommon 
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
@@ -26,7 +23,7 @@ namespace TeamUp.Web.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            Bootstrapper.Initialize(CreateKernel);
         }
         
         /// <summary>
@@ -34,7 +31,7 @@ namespace TeamUp.Web.App_Start
         /// </summary>
         public static void Stop()
         {
-            bootstrapper.ShutDown();
+            Bootstrapper.ShutDown();
         }
         
         /// <summary>
@@ -67,8 +64,7 @@ namespace TeamUp.Web.App_Start
         {
             kernel.Bind<DbContext>().To<TeamUpDbContext>();
 
-            kernel.Bind<ITeamUpData>().To<TeamUpData>();
-                //.WithConstructorArgument("context", c => new TeamUpDbContext());
+            kernel.Bind<ITeamUpData>().To<TeamUpData>();//.WithConstructorArgument("context", c => new TeamUpDbContext());
         }        
     }
 }

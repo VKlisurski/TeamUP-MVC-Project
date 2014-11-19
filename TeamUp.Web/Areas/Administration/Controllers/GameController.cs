@@ -1,39 +1,29 @@
 ﻿namespace TeamUp.Web.Areas.Administration.Controllers
 {
-    using System.Web.Mvc;
-
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
-
-
-    using TeamUp.Data;
-    using TeamUp.Web.Areas.Administration.Controllers.Base;
-
-    using Kendo.Mvc.UI;
-    using Kendo.Mvc.Extensions;
-    using TeamUp.Models;
-    using System.Collections;
-    using TeamUp.Data.Contracts;
-    using System.Collections.Generic;
-    using TeamUp.Web.Areas.Administration.Models;
-    using System.Linq;
     using System;
+    using System.Linq;
+    using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
     using Microsoft.AspNet.Identity;
-    using System.Data.Entity.Validation;
-    using System.Text;
+    using TeamUp.Data.Contracts;
+    using TeamUp.Models;
+    using TeamUp.Web.Areas.Administration.Controllers.Base;
+    using TeamUp.Web.Areas.Administration.Models;
+    using AutoMapper;
 
     public class GameController : AdminController
     {
         public GameController(ITeamUpData data)
             : base(data)
         {
-
         }
 
         public ActionResult Index()
         {
             ViewBag.Fields = this.Data.Fields.All().ToList();
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -54,30 +44,37 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                Field field = this.Data.Fields.SearchFor(f => f.Name == model.FieldName).FirstOrDefault();
+                Field field = this.Data.Fields.SearchFor(f => f.Id == model.FieldId).FirstOrDefault();
                 var userId = User.Identity.GetUserId();
                 User currentUser = this.Data.Users.Find(userId);
 
                 if (field == null)
                 {
-                    return View("Игрището не е намерено");
+                    return this.View("Игрището не е намерено");
                 }
 
-                var game = new Game()
-                {
-                    StartDate = model.StartDate,
-                    AvailableSpots = model.AvailableSpots,
-                    HasReservetion = model.HasReservetion,
-                    MinPlayers = model.MinPlayers,
-                    MaxPlayers = model.MaxPlayers,
-                    Price = model.Price,
-                    Creator = currentUser,
-                    Field = field
-                };
+                var dbModel = new Game();
+                Mapper.CreateMap<GameViewModel, Game>();
+                Mapper.Map(model, dbModel);
 
-                this.Data.Games.Add(game);
+                dbModel.Creator = currentUser;
+                dbModel.Field = field;
+
+                //var game = new Game()
+                //{
+                //    StartDate = model.StartDate,
+                //    AvailableSpots = model.AvailableSpots,
+                //    HasReservetion = model.HasReservetion,
+                //    MinPlayers = model.MinPlayers,
+                //    MaxPlayers = model.MaxPlayers,
+                //    Price = model.Price,
+                //    Creator = currentUser,
+                //    Field = field
+                //};
+
+                this.Data.Games.Add(dbModel);
                 this.Data.SaveChanges();
-                model.Id = game.Id;
+                model.Id = dbModel.Id;
             }
 
             return Json(new[] { model}.ToDataSourceResult(request, ModelState));

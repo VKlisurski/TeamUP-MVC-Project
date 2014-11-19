@@ -11,7 +11,6 @@
         public AdminController(ITeamUpData data)
             : base(data)
         {
-
         }
     }
 }

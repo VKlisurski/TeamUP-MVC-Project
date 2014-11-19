@@ -1,24 +1,23 @@
 ﻿namespace TeamUp.Web.Controllers
 {
-    using AutoMapper.QueryableExtensions;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
     using TeamUp.Data.Contracts;
     using TeamUp.Web.Models;
-    using System.Linq;
 
     public class HomeController : BaseController
     {
         public HomeController(ITeamUpData data)
             : base(data)
         {
-            
         }
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         [ChildActionOnly]
@@ -70,7 +69,7 @@
             }
             else
             {
-                return View();
+                return this.View();
             }
         }
     }

@@ -14,7 +14,7 @@
         public GenericRepository(DbContext givvenContext)
         {
             this.context = givvenContext;
-            this.set = context.Set<T>();
+            this.set = this.context.Set<T>();
         }
 
         public IQueryable<T> All()

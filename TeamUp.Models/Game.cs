@@ -50,6 +50,7 @@
             {
                 return this.approvedPlayers;
             }
+
             set
             {
                 this.approvedPlayers = value;
@@ -62,6 +63,7 @@
             {
                 return this.appliedPlayers;
             }
+
             set
             {
                 this.appliedPlayers = value;

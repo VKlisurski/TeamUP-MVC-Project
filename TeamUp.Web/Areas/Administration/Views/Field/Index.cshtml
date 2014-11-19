@@ -18,7 +18,7 @@
             cols.Bound(pr => pr.Phone);
             cols.Bound(pr => pr.Website).ClientTemplate("<a href='#= Website #' target='_blank'>Сайт</a>").Width(50);
             cols.Bound(pr => pr.City);
-            cols.Bound(pr => pr.Neighbourhood).Width(50);
+            cols.Bound(pr => pr.Neighbourhood).Width(150);
             cols.Bound(pr => pr.Street).Width(60);
             cols.Bound(pr => pr.StreetNumber).Width(10);
             cols.Command(com => com.Edit()).Title("Промени");
@@ -30,16 +30,11 @@
         {
             edit.Mode(GridEditMode.PopUp);
         })
-    .ToolBar(toolbar =>
-        {
-            toolbar.Create();
-        })
     .ColumnMenu()
     .DataSource(data => data
         .Ajax()
         .Model(m => m.Id(adv => adv.Id))
         .Read(read => read.Action("Read", ControllerName))
-        .Create(create => create.Action("Create", ControllerName))
         .PageSize(5)
         .Update(update => update.Action("Update", ControllerName))
         .Destroy(destroy => destroy.Action("Destroy", ControllerName))

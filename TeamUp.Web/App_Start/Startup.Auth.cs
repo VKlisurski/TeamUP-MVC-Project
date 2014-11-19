@@ -5,9 +5,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
     using Microsoft.Owin.Security.Cookies;
-    using Microsoft.Owin.Security.Google;
     using Owin;
-    using TeamUp.Web.Models;
     using TeamUp.Data;
     using TeamUp.Models;
 

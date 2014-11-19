@@ -1,9 +1,9 @@
 ﻿namespace TeamUp.Web.Areas.Administration.Models
 {
-    using AutoMapper;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
+    using AutoMapper;
     using TeamUp.Infrastructure.Mapping;
     using TeamUp.Models;
 
@@ -36,12 +36,11 @@
         [Display(Name = "Допълнителна информация")]
         public string MoreInfo { get; set; }
 
-
         [HiddenInput(DisplayValue = false)]
         public Address Address { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
         public Img Img { get; set; }
-
 
         [Required]
         [Display(Name = "Град")]

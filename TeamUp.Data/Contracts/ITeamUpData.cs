@@ -4,11 +4,11 @@
 
     public interface ITeamUpData
     {
-        IGenericRepository<Address> Addresses { get;}
+        IGenericRepository<Address> Addresses { get; }
 
-        IGenericRepository<Field> Fields { get;}
+        IGenericRepository<Field> Fields { get; }
 
-        IGenericRepository<Game> Games { get;}
+        IGenericRepository<Game> Games { get; }
 
         IGenericRepository<User> Users { get; }
 
